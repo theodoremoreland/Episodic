@@ -1,0 +1,90 @@
+#reviewHistoryTableContainer {
+    height: 100vh !important;
+    width: 90% !important;
+    margin: auto !important;
+    margin-bottom: 400px !important;
+}
+
+#reviewHistoryTableContainer .pageTitle {
+    color: #3c3c3d !important;
+}
+
+/* TABLE HEADER */
+#reviewHistoryTableContainer .MuiDataGrid-colCell {
+    background-color:#f5f5f5;
+    color:#007360;
+    font-family: accent;
+    font-size: 1.1em;
+}
+
+/* TABLE ROWS */
+#reviewHistoryTableContainer .MuiDataGrid-row:nth-child(even) {
+    background-color: #f5f5f5;
+    color: #3c3c3d;
+    font-family: accent-light;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+#reviewHistoryTableContainer .MuiDataGrid-row:nth-child(odd) {
+    background-color: #c8c8c8;
+    color: #3c3c3d;
+    font-family: accent-light;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+#reviewHistoryTableContainer a:link,
+#reviewHistoryTableContainer a:active,
+#reviewHistoryTableContainer a:visited,
+#reviewHistoryTableContainer a:hover {
+    text-decoration: none;
+}
+
+#reviewHistoryTableContainer .link {
+    display: inline-block;
+    text-align: end;
+    width: 100%;
+    margin-right: 0%;
+    margin-left: auto;
+}
+
+
+/* TABLE OPTIONS */
+#reviewHistoryTableContainer button.downloadButton {
+    margin-top: -45px !important;
+    margin-bottom: 25px !important;
+    background-color: #007360 !important;
+    color: #f5f5f5 !important;
+    font-family: accent !important;  
+}
+
+#reviewHistoryTableContainer p, .MuiDataGrid-rowCount {
+    color: #000000 !important;
+    font-family: accent !important;  
+}
+
+.MuiTablePagination-actions button {
+    color: rgb(0, 0, 0) !important
+}
+
+
+/* __________________ FILTERS ____________________________ */
+
+.filterContainer {
+    display: block;
+}
+
+div.MuiFormControl-root.tableFilter {
+    display: inline-block;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.tableFilter .MuiFilledInput-root {
+    background-color: #ffffff;
+}
+
+.tableFilter .MuiInputBase-input {
+    background: white !important;
+}

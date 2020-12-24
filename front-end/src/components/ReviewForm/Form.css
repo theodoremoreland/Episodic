@@ -1,0 +1,64 @@
+/* ___________________ INPUT ____________________________ */
+
+.reviewFormContent input, #weekEndingDatePicker {
+  width: 100% !important;
+  font-family: accent-light !important; 
+  color: #3c3c3d !important; 
+}
+
+/* .SingleTextField {
+  margin-bottom: 35px !important;
+} */
+
+
+/* ___________________ INPUT LABEL ____________________________ */
+
+#weekEndingDatePicker-label {
+  font-family: accent !important;
+  font-size: 1em;
+  color: #007360 !important;
+  width: 100% !important;
+  display: flex !important;
+}
+
+#reviewForm .groupHeader {
+  font-family: accent !important;
+  font-size: 1.8em !important;
+  color: #000000 !important;
+  margin-top: 50px !important;
+  margin-bottom: -20px !important;
+  display: block !important;
+}
+
+#reviewForm .questions {
+  font-family: accent !important;
+  font-size: 1.25em !important;
+  color: #007360 !important;
+  width: 100% !important;
+  margin-top: 50px !important;
+  margin-bottom: -8px !important;
+}
+
+
+/* __________________ MEDIA QUERIES ____________________________ */
+
+
+@media screen and (max-width: 960px) {
+
+  .questions {
+    margin-top: 3.5% !important;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+
+  .questions {
+    margin-top: 8.5% !important;
+  }
+
+  .reviewFormContent label {
+    font-size: 0.65em;
+  }
+}
+

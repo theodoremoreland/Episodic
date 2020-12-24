@@ -1,0 +1,203 @@
+/* ___________________ FONTS ____________________________ */
+
+
+@font-face {
+    font-family: header;
+    src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf');
+}
+  
+@font-face {
+    font-family: accent;
+    src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf');
+}
+    
+@font-face {
+    font-family: accent-light;
+    src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf');
+}
+
+
+/* ___________________ CONTENT ____________________________ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #EAD5E1;
+}
+
+.content {
+    padding-left: 240px !important;
+    flex-grow: 1;
+}
+
+.pageTitle {
+    font-family: accent !important;
+    font-size: 2em !important;
+    color: #c8c8c8 !important;
+    margin-top: 2% !important;
+    margin-bottom: 1% !important;
+}
+
+.MuiTypography-body1 {
+    font-family: accent !important;
+}
+
+button {
+    font-family: header !important;
+}
+
+/* ___________________ FORM STYLES ____________________________ */
+
+
+.form-section {
+    background-color: #4A4883;
+    border-radius: 6px;
+    margin: 40px auto 40px auto;
+    padding: 25px;
+    -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  /* Firefox 3.5 - 3.6 */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  }
+
+  .formHeader {
+      margin-bottom: 50px;
+  }
+  
+.form-description {
+    font-family: accent-light !important;
+    font-size: 1.5em !important;
+    color: #c8c8c8 !important;
+    margin-bottom: 3% !important;
+}
+
+/* Input containers */
+div.MuiFormControl-root {
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    width: 100%;
+}
+
+
+/* Hides asterisks */
+.MuiFormLabel-asterisk.MuiInputLabel-asterisk {
+    display: none;
+}
+
+/* Overwrites rounded edges for outlined inputs */
+.MuiOutlinedInput-root {
+    border-radius: 0px !important;
+}
+
+/* Styling for filled and disabled input area */
+.MuiInputBase-root.MuiFilledInput-root.MuiFilledInput-underline.Mui-disabled.Mui-disabled.MuiInputBase-formControl {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+
+/* ___________________ SUBMIT BUTTON ____________________________ */
+
+button#submit-button {
+    margin-top: 3% !important;
+    margin-bottom: 5% !important;
+    background-color: #2f4353 !important;
+}
+
+
+/* ___________________ HOVER TEXT ____________________________ */
+
+.MuiTooltip-tooltip {
+    font-size: 1.2em !important;
+    font-family: accent-light !important;
+    background-color: rgba(117, 117, 117, 0.849) !important;
+}
+
+.MuiTooltip-arrow {
+    color:rgba(117, 117, 117, 0.849) !important;
+}
+  
+  
+/* __________________ CONFIRMATION PROMPT ____________________________ */
+
+#confirmationTitle {
+    font-family: header !important;
+    color: #000000 !important;
+    margin-bottom: 0% !important;
+}
+
+#confirmationBody {
+    font-family: accent !important;
+}
+
+.confirmationQuestion {
+    font-family: header !important;
+    color:#2f4353 !important;
+    margin-bottom: 0% !important;
+}
+
+
+/* ___________________ MEDIA QUERIES ____________________________ */
+
+@media screen and (min-width: 2561px) {
+    .form-section {
+        width: 20%;
+    }
+}
+  
+@media screen and (max-width: 2560px) {
+    .form-section {
+        width: 40%;
+    }
+}
+  
+@media screen and (max-width: 1920px) {
+    .form-section {
+        width: 50%; 
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .form-section {
+        width: 70%; 
+    }
+}
+  
+@media screen and (max-width: 960px) {
+
+    .content {
+        padding: 30px !important;
+    }
+
+    .form-title {
+        margin-bottom: 3% !important;
+    }
+
+    .form-description {
+        margin-bottom: 6% !important;
+    }
+
+    div.MuiFormControl-root {
+        margin-top: 3% !important;
+    }
+}
+  
+  
+@media screen and (max-width: 600px) {
+
+    .form-section {
+        width: 100%;
+    }
+
+    .form-title {
+        margin-bottom: 6% !important;
+    }
+
+    .form-description {
+        margin-bottom: 10% !important;
+    }
+
+    div.MuiFormControl-root {
+        margin-top: 5% !important;
+    }
+}

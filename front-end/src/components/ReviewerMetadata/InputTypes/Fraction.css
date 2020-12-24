@@ -1,0 +1,15 @@
+.fractionTitle {
+    font-family: accent !important;
+    color: #007360;
+    font-size: 1.25em !important;
+    margin-top: 25px !important;
+}
+
+.fractionDividerContainer {
+    flex-basis: 0 !important;
+}
+
+.fractionDivider {
+    color: grey;
+    margin-top: 10px !important;
+}

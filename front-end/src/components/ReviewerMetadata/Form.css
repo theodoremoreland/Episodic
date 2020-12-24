@@ -1,0 +1,132 @@
+.MuiInput-underline:before {
+  border-bottom: 1px solid white !important;
+}
+
+#registrationForm label {
+  font-family: accent !important;
+  color: #c8c8c8 !important;
+}
+
+#registrationForm textarea {
+  color: #c8c8c8 !important;
+}
+
+#registrationForm input {
+  font-family: accent-light !important; 
+  /* Changes size of input box */
+  margin-top: 0px !important;
+  color: #c8c8c8 !important;
+}
+
+#registrationForm .groupHeader {
+    font-family: accent !important;
+    font-size: 1.4em !important;
+    color: #c8c8c8 !important;
+    margin-top: 4%;
+    display: block !important;
+}
+
+#registrationForm .fractionTitle {
+  color: #c8c8c8 !important;
+}
+
+.registrationTextField {
+  margin: 25px 0px 30px 0px !important;
+}
+
+
+/* __________________ CHECKBOX ____________________________ */
+
+.registrationCheckbox {
+  margin-top: 20px !important;
+  font-family: accent !important;
+}
+
+.registrationCheckbox legend {
+  font-family: accent !important;
+  font-size: 1em !important;
+  color: #c8c8c8 !important;
+}
+
+.registrationCheckbox label {
+  font-family: accent !important;
+  width: auto !important;
+  color: #c8c8c8 !important;
+}
+
+
+/* __________________ RADIO ____________________________ */
+
+.registrationRadioGroup {
+    display: block !important;
+    margin-top: 3% !important;
+}
+
+.registrationRadioGroup legend {
+  font-family: accent !important;
+  color: #c8c8c8 !important;
+}
+
+.MuiRadio-colorSecondary.Mui-checked {
+  color: #c8c8c8 !important;
+}
+
+
+/* __________________ COMPOUND ____________________________ */
+
+.registrationCompoundRadioGroup {
+  display: inline;
+  width: 50%;
+  margin-top: 32px !important;
+}
+
+.registrationCompoundRadioGroup legend {
+  font-family: accent !important;
+  color: #c8c8c8 !important;
+}
+
+.registrationCompoundTextField {
+  display: inline-block !important;
+  width: 100% !important;
+  margin-top: -7px !important;
+  margin-bottom: 32px !important;
+}
+
+
+/* __________________ CONFIRMATION PROMPT ____________________________ */
+
+#confirmationTitle {
+  font-family: header !important;
+  color: #c8c8c8 !important;
+  margin-bottom: 0% !important;
+}
+  
+#confirmationBody {
+  font-family: accent !important;
+}
+
+.confirmationQuestion {
+  font-family: header !important;
+  color: #c8c8c8 !important;
+  margin-bottom: 0% !important;
+}
+
+
+@media screen and (max-width: 600px) {
+
+  #registrationForm .groupHeader {
+    margin-top: 20px;
+  }
+
+  #registrationForm label + .MuiInput-formControl {
+    margin-top: 45px;
+  }
+
+  .registrationCheckbox {
+    margin-top: 40px !important;
+  }
+
+  .registrationRadioGroup legend {
+    padding-top: 30px;
+  }
+}

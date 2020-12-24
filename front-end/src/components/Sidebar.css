@@ -1,0 +1,68 @@
+.sidebar-container {
+    display: flex;
+}
+
+.MuiPaper-root.MuiDrawer-paper {
+    color: white;
+    background-color: #4A4883;
+    width: 240px !important;
+}
+
+.appBar {
+    width: calc(100% - 240px);
+    margin-left: 240;
+}
+
+.permanentDrawer {
+    visibility: hidden;
+}
+
+/* __________________ TEXT ____________________________ */
+
+.sidebar-container .MuiTypography-root {
+    font-family: header !important; 
+}
+
+.app-title {
+    font-family: header !important;
+    justify-content: center !important;
+    padding-bottom: 5% !important;
+    padding-top: 5% !important;
+    margin-left: 25px !important;
+}
+
+a.nav-button:link, a.nav-button:active, a.nav-button:visited, a.nav-button:hover {
+    text-decoration: none;
+    color:white;
+}
+
+/* __________________ ICONS ____________________________ */
+
+.MuiListItemIcon-root {
+    min-width: 35px !important;
+}
+
+.menuButton {
+    margin-right: 20px;
+}
+
+
+@media screen and (min-width: 961px) {
+    .drawer {
+        width: 240;
+        flex-shrink: 0;
+    }
+
+    .permanentDrawer {
+        visibility: visible;
+    }
+
+    .appBar {
+        visibility: hidden;
+    }
+
+    .menuButton {
+        display: none;
+    }
+
+}
