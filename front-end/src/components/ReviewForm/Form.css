@@ -3,7 +3,6 @@
 .reviewFormContent input, #weekEndingDatePicker {
   width: 100% !important;
   font-family: accent-light !important; 
-  color: #3c3c3d !important; 
 }
 
 /* .SingleTextField {
@@ -16,7 +15,7 @@
 #weekEndingDatePicker-label {
   font-family: accent !important;
   font-size: 1em;
-  color: #007360 !important;
+  color: #ffffff !important;
   width: 100% !important;
   display: flex !important;
 }
@@ -24,21 +23,22 @@
 #reviewForm .groupHeader {
   font-family: accent !important;
   font-size: 1.8em !important;
-  color: #000000 !important;
-  margin-top: 50px !important;
+  color: #e2e2e2 !important;
+  margin-top: 35px !important;
   margin-bottom: -20px !important;
   display: block !important;
+  text-shadow: 2px 2px #ff0000;
 }
 
 #reviewForm .questions {
   font-family: accent !important;
   font-size: 1.25em !important;
-  color: #007360 !important;
+  color: #e4e4e4 !important;
   width: 100% !important;
   margin-top: 50px !important;
   margin-bottom: -8px !important;
+  text-shadow: 2px 2px #8c00e9;
 }
-
 
 /* __________________ MEDIA QUERIES ____________________________ */
 

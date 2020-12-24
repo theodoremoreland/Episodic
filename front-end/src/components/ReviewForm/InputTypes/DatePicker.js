@@ -19,7 +19,7 @@ import { isNotCurrentOrPreviousSaturday } from '../DateFilters';
 
 export default function DatePickerWrapper(props) {
     const { date, setDate, answers, setAnswers } = props;
-    const hoverText = "The week of data is from Friday, close of business, to the next Friday, close of business.\nData will preferably be entered each Friday close of business or the following Monday";
+    const hoverText = "";
 
     const handleDateChange = (date) => {
         const weekEnding = toPartialISOString(date);

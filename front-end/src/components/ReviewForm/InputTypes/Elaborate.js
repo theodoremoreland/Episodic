@@ -49,14 +49,13 @@ export default function Elaborate({inputSettings}) {
                 }
             </RadioGroup>
         </FormControl>
-        { radioValue === "Yes"
+        { radioValue === "No"
             ?           
                 <TextField
                     className="ElaborateTextField"
                     variant="standard"
                     type="text"
-                    label="Please describe"
-                    InputProps={{ inputProps: { min: 0 } }}
+                    label="Why not?"
                     required
                     onChange={(event) => setAnswers({...answers, [question] : `${radioValue}. ${event.target.value}`})}
                 />

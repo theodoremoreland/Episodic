@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Overview = ({ total, total }) => {
+const DonutChart = ({ total }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -94,4 +94,4 @@ const Overview = ({ total, total }) => {
   );
 };
 
-export default ExposureOverview;
+export default DonutChart;

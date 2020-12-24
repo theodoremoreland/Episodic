@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const groupedBarChart = ({ series, total }) => {
+const GroupedBarChart = ({ series, total }) => {
   const classes = useStyles();
   const theme = useTheme();
   const labels = [];
@@ -121,4 +121,4 @@ const groupedBarChart = ({ series, total }) => {
   );
 };
 
-export default Cases;
+export default GroupedBarChart;

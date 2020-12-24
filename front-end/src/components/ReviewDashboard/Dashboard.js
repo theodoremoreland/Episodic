@@ -6,12 +6,9 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import { Container, Grid, Typography } from '@material-ui/core';
 
 // Custom components
-import TotalCases from './TotalCases';
-import CasesPerHundred from './CasesPerHundred';
-import TotalQuarantined from './TotalQuarantined';
-import SchoolExposures from './SchoolExposures';
-import SchoolPopulation from './SchoolPopulation';
-import ExposureOverview from './ExposureOverview';
+import KPI from './KPI';
+import GroupedBarChart from './GroupedBarChart';
+import DonutChart from './DonutChart';
 
 // Styles
 import './Container.css';
@@ -110,42 +107,42 @@ function DashboardContainer() {
           {
             schoolPostiveCases === undefined || schoolCasesSinceWeekPrior === undefined || schoolCasesChangeFromLastWeek === undefined
               ? <Skeleton id="input" variant="rect" height={200}/>
-              : <TotalCases totalPostiveCases = {schoolPostiveCases} schoolCasesSinceWeekPrior = {schoolCasesSinceWeekPrior} totalCasesChangeFromLastWeek = {schoolCasesChangeFromLastWeek} />
+              : <KPI totalPostiveCases = {schoolPostiveCases} schoolCasesSinceWeekPrior = {schoolCasesSinceWeekPrior} KPIChangeFromLastWeek = {schoolCasesChangeFromLastWeek} />
           }
         </Grid>
         <Grid item lg={3} sm={6} xl={3} xs={12}>
           {
             schoolCasesDueToExposure === undefined || schoolCasesDueToExposureSinceWeekPrior === undefined || schoolCasesDueToExposureChangeFromLastWeek === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <SchoolExposures totalCasesDueToExposure = {schoolCasesDueToExposure} schoolCasesDueToExposureSinceWeekPrior = {schoolCasesDueToExposureSinceWeekPrior} totalCasesDueToExposureChangeFromLastWeek = {schoolCasesDueToExposureChangeFromLastWeek} />
+            : <KPI KPIDueToExposure = {schoolCasesDueToExposure} schoolCasesDueToExposureSinceWeekPrior = {schoolCasesDueToExposureSinceWeekPrior} KPIDueToExposureChangeFromLastWeek = {schoolCasesDueToExposureChangeFromLastWeek} />
           }
         </Grid>
         <Grid item lg={3} sm={6} xl={3} xs={12}>
           {
             schoolQuarantined === undefined || schoolQuarantinedSinceWeekPrior === undefined || schoolQuarantinedChangeFromLastWeek === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <TotalQuarantined totalQuarantined = {schoolQuarantined} schoolQuarantinedSinceWeekPrior = {schoolQuarantinedSinceWeekPrior} totalQuarantinedChangeFromLastWeek = {schoolQuarantinedChangeFromLastWeek} />
+            : <KPI KPI = {schoolQuarantined} schoolQuarantinedSinceWeekPrior = {schoolQuarantinedSinceWeekPrior} KPIChangeFromLastWeek = {schoolQuarantinedChangeFromLastWeek} />
           }
         </Grid>
         <Grid item lg={3} sm={6} xl={3} xs={12}>
           {
             schoolPopulation === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <SchoolPopulation totalPopulation = {schoolPopulation} />
+            : <KPI totalPopulation = {schoolPopulation} />
           }
         </Grid>
         <Grid item lg={8} md={12} xl={9} xs={12}>
           {
             schoolPerHundred === undefined || totalPerHundred === undefined
             ? <Skeleton id="input" variant="rect" height={600}/>
-            : <CasesPerHundred schoolPerHundred = {schoolPerHundred} totalPerHundred = {totalPerHundred} />
+            : <GroupedBarChart schoolPerHundred = {schoolPerHundred} totalPerHundred = {totalPerHundred} />
           }
         </Grid>
         <Grid item lg={4} md={6} xl={3} xs={12}>
           {
             schoolStudentCases === undefined || schoolFacultyCases === undefined
             ? <Skeleton id="input" variant="rect" height={600}/> 
-            : <ExposureOverview totalStudentCases = {schoolStudentCases} totalFacultyCases = {schoolFacultyCases} />
+            : <DonutChart totalStudentCases = {schoolStudentCases} totalFacultyCases = {schoolFacultyCases} />
           }
         </Grid>
       </Grid>

@@ -27,31 +27,31 @@ export default function DoubleTextField({inputSettings}) {
                     </Tooltip>
                 </Grid>
 
-                {/* Field for 'faculty/staff' */}
+                {/* Field for 'anime' */}
                 <Grid item xs={6}>
                     <TextField
                             className="DoubleTextField"
-                            label="Faculty/Staff"
-                            variant="outlined"
+                            label="Anime"
+                            variant="filled"
                             type="number"
-                            InputProps={{ inputProps: { min: 0 } }}
+                            InputProps={{ inputProps: { min: 1, max: 10 } }}
                             required={required}
-                            onChange={(event) => setAnswers({...answers, [question] : {...answers[question], "faculty/staff": event.target.value || null}})}
+                            onChange={(event) => setAnswers({...answers, [question] : {...answers[question], "anime": event.target.value || null}})}
                             // event.target.value becomes an empty string if users delete number after adding it
                             // , thus '|| null' is needed to replace empty string with null. 
                     />
                 </Grid>
 
-                {/* Field for 'students' */}
+                {/* Field for 'manga' */}
                 <Grid item xs={6}>
                     <TextField
                         className="DoubleTextField"
-                        label="Students"
-                        variant="outlined"
+                        label="Manga"
+                        variant="filled"
                         type="number"
-                        InputProps={{ inputProps: { min: 0 } }}
+                        InputProps={{ inputProps: { min: 1, max: 10 } }}
                         required={required}
-                        onChange={(event) => setAnswers({...answers, [question] : {...answers[question], "students": event.target.value || null}})}
+                        onChange={(event) => setAnswers({...answers, [question] : {...answers[question], "manga": event.target.value || null}})}
                         // event.target.value becomes an empty string if users delete number after adding it
                         // , thus '|| null' is needed to replace empty string with null.
                     />

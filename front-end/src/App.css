@@ -33,9 +33,9 @@ html, body {
 .pageTitle {
     font-family: accent !important;
     font-size: 2em !important;
-    color: #c8c8c8 !important;
+    color: #ffffff !important;
     margin-top: 2% !important;
-    margin-bottom: 1% !important;
+    text-shadow: 2px 2px #ff0000;
 }
 
 .MuiTypography-body1 {
@@ -60,14 +60,13 @@ button {
   }
 
   .formHeader {
-      margin-bottom: 50px;
+      margin-bottom: 0px;
   }
   
 .form-description {
     font-family: accent-light !important;
     font-size: 1.5em !important;
-    color: #c8c8c8 !important;
-    margin-bottom: 3% !important;
+    color: #ffffff !important;
 }
 
 /* Input containers */
@@ -76,6 +75,10 @@ div.MuiFormControl-root {
     margin-top: 2%;
     margin-bottom: 0%;
     width: 100%;
+}
+
+.MuiInputBase-input, .MuiFormLabel-root {
+    color: #ffffff !important;
 }
 
 
@@ -101,7 +104,8 @@ div.MuiFormControl-root {
 button#submit-button {
     margin-top: 3% !important;
     margin-bottom: 5% !important;
-    background-color: #2f4353 !important;
+    background-color: #861b1d !important;
+    color: #ffffff !important;
 }
 
 

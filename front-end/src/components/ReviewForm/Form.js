@@ -18,6 +18,7 @@ import DatePicker from './InputTypes/DatePicker';
 import SingleTextField from './InputTypes/SingleTextField';
 import DoubleTextField from './InputTypes/DoubleTextField';
 import Elaborate from './InputTypes/Elaborate';
+import Dropdown from './InputTypes/Dropdown';
 
 // Custom styles
 import './Form.css';
@@ -44,7 +45,7 @@ export default function ReviewForm() {
     
         questions.forEach(obj => {
             if (obj.inputType === "true") {
-                placeholderAnswers[obj.question] = { "TV Adaptation" : null, "Literature" : null};
+                placeholderAnswers[obj.question] = { "Anime" : null, "Manga" : null};
             }
             else if (obj.question === "Email") {
                 placeholderAnswers[obj.question] = userEmail;
@@ -64,12 +65,13 @@ export default function ReviewForm() {
 
     const getSeries = async () => {
         const requestOptions = {
+            method: 'GET',
             headers: {
               'Content-Type': 'application/json'
             }
         };
 
-        await fetch("http://127.0.0.1:5000/series", requestOptions)
+        await fetch(`/series`, requestOptions)
             .then(function (response) {
                 if (response.status !== 200) {
                     return Promise.reject(`${response.status} ${response.statusText}`);
@@ -78,7 +80,7 @@ export default function ReviewForm() {
                 return response.json();
             })
             .then(function (data) {
-                setSeriesData(data);
+                setSeriesData(data.series);
             })
             .catch(error => {
                 const text = `Failed to retrive user series data. ${error.toString()}`;
@@ -99,7 +101,7 @@ export default function ReviewForm() {
             }
         };
 
-        await fetch("http://127.0.0.1:5000/questions", requestOptions)
+        await fetch(`/questions`, requestOptions)
             .then(function (response) {
                 if (response.status !== 200) {
                     return Promise.reject(`${response.status} ${response.statusText}`);
@@ -108,6 +110,7 @@ export default function ReviewForm() {
                 return response.json();
             })
             .then(function (data) {
+                console.log(data)
                 setQuestions(data);
                 initializeAnswers(data, userEmail, series);
             })
@@ -152,6 +155,9 @@ export default function ReviewForm() {
         else if (inputType === "Elaborate") {
             return <Elaborate inputSettings={inputSettings} />
         }
+        else if (inputType === "Dropdown") {
+            return <Dropdown inputSettings={inputSettings} seriesOptions={series} />
+        }
     };
 
 
@@ -165,7 +171,7 @@ export default function ReviewForm() {
             response: true
         };
         
-        await fetch("http://127.0.0.1:5000/submit-reviews", requestOptions)
+        await fetch(`${process.REACT_APP_EPISODIC_API_ENDPOINT}/submit-review`, requestOptions)
             .then(async response => {
 
                 if (response.status !== 201) {
@@ -173,7 +179,7 @@ export default function ReviewForm() {
                 }
 
                 setAlertMessageObj({
-                    "text": "Your form has been successfully submitted! You can now submit another form or exit.",
+                    "text": "Your review has been successfully submitted! You can now submit another review or exit.",
                     "severity": "success",
                     "duration": 6_000
                 });
@@ -230,17 +236,17 @@ export default function ReviewForm() {
                                 />
                                 { questions.filter(questionObj => questionObj.questionGroup === "").map((questionObj) => renderQuestion(questionObj)) }
                                 <label className="groupHeader" variant="h5">
-                                    {"Renditions"}
+                                    {"Anime Vs Manga"}
                                 </label>
-                                { questions.filter(questionObj => questionObj.questionGroup === "Renditions").map((questionObj) => renderQuestion(questionObj)) }
+                                { questions.filter(questionObj => questionObj.questionGroup === "Anime Vs Manga").map((questionObj) => renderQuestion(questionObj)) }
                                 <label className="groupHeader" variant="h5">
-                                    {"Expectations"}
+                                    {"Anime"}
                                 </label>
-                                { questions.filter(questionObj => questionObj.questionGroup === "Expectations").map((questionObj) => renderQuestion(questionObj)) }
+                                { questions.filter(questionObj => questionObj.questionGroup === "Anime").map((questionObj) => renderQuestion(questionObj)) }
                                 <label className="groupHeader" variant="h5">
-                                    {"Comments"}
+                                    {"Hype Train"}
                                 </label>
-                                { questions.filter(questionObj => questionObj.questionGroup === "Comments").map((questionObj) => renderQuestion(questionObj)) }
+                                { questions.filter(questionObj => questionObj.questionGroup === "Hype Train").map((questionObj) => renderQuestion(questionObj)) }
                             </FormControl>
                             <Button id="submit-button" type="submit" variant="contained" color="primary">
                                 Submit

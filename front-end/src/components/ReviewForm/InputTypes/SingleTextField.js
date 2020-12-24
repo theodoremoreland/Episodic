@@ -18,8 +18,7 @@ export default function SinlgeTextField({inputSettings}) {
 
     const defaultValue = question === "Email" ? email : (question === "School" ? school : null);
     const disabled = (question === "Email" || question === "School") ? true : false;
-    const variant = (question === "Email" || question === "School") ? "filled" : "outlined";
-    const type = question.includes("number") ? "number" : "text";
+    const type = question === "Email" ? "text" : "number";
 
     return (
         <>
@@ -31,9 +30,9 @@ export default function SinlgeTextField({inputSettings}) {
             <TextField
                 disabled={disabled}
                 className="SingleTextField"
-                variant={variant}
+                variant="filled"
                 type={type}
-                InputProps={{ inputProps: { min: 0 } }}
+                InputProps={{ inputProps: { min: 0, max: 10 } }}
                 defaultValue={defaultValue}
                 required={required}
                 onChange={(event) => setAnswers({...answers, [question] : event.target.value})}

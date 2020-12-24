@@ -250,17 +250,6 @@ export default function ReviewerMetadataForm() {
         getData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // Attempts to fetch previously submitted metadata on load.
-    useEffect(() => {
-        const hasIdentified = Data.district !== undefined;
-        const hasIdentifiedDistrict = Data. !== undefined;
-
-        if (hasIdentifiedDistrict && hasIdentified) {
-            getMetadata();
-        };
-
-    }, [Data.district, Data.]); // eslint-disable-line react-hooks/exhaustive-deps
-
     // Ensures that Form state and Form view are in sync. 
     useEffect(() => {
         initializeAnswers();
