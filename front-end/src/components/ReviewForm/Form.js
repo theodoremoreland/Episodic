@@ -16,7 +16,7 @@ import ConfirmationPrompt from '../ConfirmationPrompt';
 import LoadingScreen from './LoadingScreen/LoadingScreen';
 import DatePicker from './InputTypes/DatePicker';
 import SingleTextField from './InputTypes/SingleTextField';
-import DoubleTextField from './InputTypes/DoubleTextField';
+import DoubleDropdown from './InputTypes/DoubleDropdown';
 import Elaborate from './InputTypes/Elaborate';
 import Dropdown from './InputTypes/Dropdown';
 
@@ -40,18 +40,15 @@ export default function ReviewForm() {
     const [alertMessageObj, setAlertMessageObj] = useState({text: "", severity: "", duration: 0});
 
     
-    const initializeAnswers = (questions, userEmail, series) => {
+    const initializeAnswers = (questions, userEmail) => {
         const placeholderAnswers = {};
     
         questions.forEach(obj => {
-            if (obj.inputType === "true") {
-                placeholderAnswers[obj.question] = { "Anime" : null, "Manga" : null};
+            if (obj.inputType === "DoubleDropdown") {
+                placeholderAnswers[obj.question] = { "anime" : 1, "manga" : 1};
             }
             else if (obj.question === "Email") {
                 placeholderAnswers[obj.question] = userEmail;
-            }
-            else if (obj.question === "Series") {
-                placeholderAnswers[obj.question] = series;
             }
             else {
                 placeholderAnswers[obj.question] = null;
@@ -71,7 +68,7 @@ export default function ReviewForm() {
             }
         };
 
-        await fetch(`/series`, requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/series`, requestOptions)
             .then(function (response) {
                 if (response.status !== 200) {
                     return Promise.reject(`${response.status} ${response.statusText}`);
@@ -101,7 +98,7 @@ export default function ReviewForm() {
             }
         };
 
-        await fetch(`/questions`, requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/questions`, requestOptions)
             .then(function (response) {
                 if (response.status !== 200) {
                     return Promise.reject(`${response.status} ${response.statusText}`);
@@ -149,14 +146,17 @@ export default function ReviewForm() {
         if (inputType === "SingleTextField") {
             return <SingleTextField inputSettings={inputSettings} />
         }
-        else if (inputType === "DoubleTextField") {
-            return <DoubleTextField inputSettings={inputSettings} />
+        else if (inputType === "DoubleDropdown") {
+            return <DoubleDropdown inputSettings={inputSettings} />
         }
         else if (inputType === "Elaborate") {
             return <Elaborate inputSettings={inputSettings} />
         }
+        else if (question === "Series") {
+            return <Dropdown inputSettings={inputSettings} options={["No series selected", ...series]} />
+        }
         else if (inputType === "Dropdown") {
-            return <Dropdown inputSettings={inputSettings} seriesOptions={series} />
+            return <Dropdown inputSettings={inputSettings} options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
         }
     };
 

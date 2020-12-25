@@ -20,7 +20,7 @@ def lambda_handler(event, context):
         },
         {
             'question' : 'How would you rate the dialogue (on a scale of 1 to 10)?'
-            , 'inputType' : 'DoubleTextField'
+            , 'inputType' : 'DoubleDropdown'
             , 'questionGroup' : 'Anime Vs Manga'
             , 'hoverText' : 'Consider things like whether or not the chracters express distinct viewpoints, quirks, and motivations.'
             , 'required' : json.dumps(False)
@@ -28,7 +28,7 @@ def lambda_handler(event, context):
         },
         {
             'question' : 'How would you rate the artwork (on a scale of 1 to 10)?'
-            , 'inputType' : 'DoubleTextField'
+            , 'inputType' : 'DoubleDropdown'
             , 'questionGroup' : 'Anime Vs Manga'
             , 'hoverText' : 'Animation and/or illustrations depending on the medium.'
             , 'required' : json.dumps(False)
@@ -36,7 +36,7 @@ def lambda_handler(event, context):
         },
         {
             'question' : 'How would you rate the story-telling (on a scale of 1 to 10)?'
-            , 'inputType' : 'DoubleTextField'
+            , 'inputType' : 'DoubleDropdown'
             , 'questionGroup' : 'Anime Vs Manga'
             , 'hoverText' : ''
             , 'required' : json.dumps(False)
@@ -44,7 +44,7 @@ def lambda_handler(event, context):
         },
         {
             'question' : 'How would you rate the voice acting (on a scale of 1 to 10)?'
-            , 'inputType' : 'SingleTextField'
+            , 'inputType' : 'Dropdown'
             , 'questionGroup' : 'Anime'
             , 'hoverText' : ''
             , 'required' : json.dumps(False)
@@ -52,7 +52,7 @@ def lambda_handler(event, context):
         },
         {
             'question' : 'How would you rate the sound and music (on a scale of 1 to 10)?'
-            , 'inputType' : 'SingleTextField'
+            , 'inputType' : 'Dropdown'
             , 'questionGroup' : 'Anime'
             , 'hoverText' : ''
             , 'required' : json.dumps(False)

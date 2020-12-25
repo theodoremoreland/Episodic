@@ -30,7 +30,7 @@ export default function DatePickerWrapper(props) {
     return (
         <>
             <Tooltip className="hoverText" title={hoverText} width={"600px"} arrow>
-                <Typography className="questions" variant="h5" color="primary">
+                <Typography id="weekEndingLabel" className="questions" variant="h5" color="primary">
                     Week Ending
                 </Typography>
             </Tooltip>

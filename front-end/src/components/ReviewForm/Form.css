@@ -5,9 +5,9 @@
   font-family: accent-light !important; 
 }
 
-/* .SingleTextField {
-  margin-bottom: 35px !important;
-} */
+#reviewForm .MuiSvgIcon-root {
+  fill: white;
+}
 
 
 /* ___________________ INPUT LABEL ____________________________ */
@@ -23,21 +23,34 @@
 #reviewForm .groupHeader {
   font-family: accent !important;
   font-size: 1.8em !important;
-  color: #e2e2e2 !important;
+  color: #f8f8f8 !important;
   margin-top: 35px !important;
   margin-bottom: -20px !important;
   display: block !important;
-  text-shadow: 2px 2px #ff0000;
+  text-shadow: 2px 2px #BC2628;
 }
 
 #reviewForm .questions {
   font-family: accent !important;
   font-size: 1.25em !important;
-  color: #e4e4e4 !important;
+  color: #f6f6f6 !important;
   width: 100% !important;
-  margin-top: 50px !important;
+  margin-top: 35px !important;
   margin-bottom: -8px !important;
-  text-shadow: 2px 2px #8c00e9;
+  text-shadow: 1px 1px #6286d973;
+}
+
+
+#reviewForm .MuiSelect-select option {
+  background-color: #BC2628;
+}
+
+#weekEndingLabel > .MuiFormControl-root {
+  margin-bottom: -15px !important;
+}
+
+#reviewForm .MuiTypography-body1 {
+  color: #26baff;
 }
 
 /* __________________ MEDIA QUERIES ____________________________ */

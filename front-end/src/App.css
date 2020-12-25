@@ -104,7 +104,7 @@ div.MuiFormControl-root {
 button#submit-button {
     margin-top: 3% !important;
     margin-bottom: 5% !important;
-    background-color: #861b1d !important;
+    background-color: #BC2628 !important;
     color: #ffffff !important;
 }
 
@@ -114,11 +114,11 @@ button#submit-button {
 .MuiTooltip-tooltip {
     font-size: 1.2em !important;
     font-family: accent-light !important;
-    background-color: rgba(117, 117, 117, 0.849) !important;
+    background-color: #6286d9 !important;
 }
 
 .MuiTooltip-arrow {
-    color:rgba(117, 117, 117, 0.849) !important;
+    color: #6286d9 !important;
 }
   
   

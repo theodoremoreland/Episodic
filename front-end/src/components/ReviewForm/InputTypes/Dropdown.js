@@ -2,30 +2,34 @@
 import React from 'react';
 
 // Material UI
+import Tooltip from '@material-ui/core/Tooltip';
+import { Typography } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 
 
-export default function Dropdown({inputSettings, seriesOptions}) {
+export default function Dropdown({inputSettings, options}) {
     const {
         question,
-        required,
+        hoverText,
         answers,
         setAnswers
     } = inputSettings;
 
     return (
         <>
+            <Tooltip className="hoverText" title={hoverText} width={"600px"} arrow>
+                <Typography className="questions" variant="h5" color="primary">
+                    {question}
+                </Typography>
+            </Tooltip>
             <FormControl className="formDropdown" variant="filled">
-            <InputLabel htmlFor="filled-age-native-simple">{question}</InputLabel>
             <Select
                 native
                 value={answers[question]}
-                onChange={(event) => setAnswers({[question]: event.target.value})}
-                label="Series"
+                onChange={(event) => setAnswers({...answers, [question]: event.target.value})}
             >
-                {[...seriesOptions].map((series) => <option key={series || "null"} value={series}>{series || "null"}</option>)}
+                {options.map((option) => <option key={option} value={option}>{option}</option>)}
             </Select>
             </FormControl>
         </>
