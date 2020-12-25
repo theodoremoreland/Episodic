@@ -3,6 +3,9 @@ functions/
 instance/
 node_modules/
 build
+config.py
+packages
+upload.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

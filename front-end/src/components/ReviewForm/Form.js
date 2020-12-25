@@ -26,7 +26,7 @@ import './Form.css';
 
 export default function ReviewForm() {
     // USER DATA
-    const userEmail = "DemoReviewer@email.com";
+    const userEmail = "dev@demo.dev";
     // FORM STATE
     const [date, setDate] = useState(determineCurrentSaturday());
     const [series, setSeriesData] = useState(undefined);
@@ -49,6 +49,9 @@ export default function ReviewForm() {
             }
             else if (obj.question === "Email") {
                 placeholderAnswers[obj.question] = userEmail;
+            }
+            else if (obj.question === "Series") {
+                placeholderAnswers[obj.question] = series[0];
             }
             else {
                 placeholderAnswers[obj.question] = null;
@@ -77,7 +80,7 @@ export default function ReviewForm() {
                 return response.json();
             })
             .then(function (data) {
-                setSeriesData(data.series);
+                setSeriesData(data);
             })
             .catch(error => {
                 const text = `Failed to retrive user series data. ${error.toString()}`;
@@ -153,7 +156,7 @@ export default function ReviewForm() {
             return <Elaborate inputSettings={inputSettings} />
         }
         else if (question === "Series") {
-            return <Dropdown inputSettings={inputSettings} options={["No series selected", ...series]} />
+            return <Dropdown inputSettings={inputSettings} options={series} />
         }
         else if (inputType === "Dropdown") {
             return <Dropdown inputSettings={inputSettings} options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
@@ -171,7 +174,7 @@ export default function ReviewForm() {
             response: true
         };
         
-        await fetch(`${process.REACT_APP_EPISODIC_API_ENDPOINT}/submit-review`, requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/submit-review`, requestOptions)
             .then(async response => {
 
                 if (response.status !== 201) {
@@ -189,7 +192,7 @@ export default function ReviewForm() {
             })
             .catch(error => {
                 setAlertMessageObj({
-                    "text": `The was an error: ${error.toString()}`,
+                    "text": `There was an error: ${error.toString()}`,
                     "severity": "error",
                     "duration": 10_000
                 })
