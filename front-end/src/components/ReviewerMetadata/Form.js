@@ -10,7 +10,6 @@ import Alert from '../Alert';
 import ConfirmationPrompt from '../ConfirmationPrompt';
 import LoadingScreen from './LoadingScreen/LoadingScreen';
 import Checkbox from './InputTypes/Checkbox';
-import Compound from './InputTypes/Compound';
 import Fraction from './InputTypes/Fraction';
 import Radio from './InputTypes/Radio';
 import TextField from './InputTypes/TextField';
@@ -24,8 +23,7 @@ import { questions } from './Constants';
 
 export default function ReviewerMetadataForm() {
     // USER DATA
-    const [userEmail, setUserEmail] = useState("");
-    const [Data, setData] = useState({});
+    const userEmail = "dev@test.dev";
     const [activeMetadata, setActiveMetaData] = useState({});
     // FORM STATE
     const [answers, setAnswers] = useState({});
@@ -70,33 +68,6 @@ export default function ReviewerMetadataForm() {
     };
 
 
-    const getData = async () => {
-        const requestOptions = {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-        };
-
-        await fetch("http://127.0.0.1:5000/-data", requestOptions)
-            .then(function (response) {
-                if (response.status !== 200) {
-                    return Promise.reject(`${response.status} ${response.statusText}`);
-                };
-
-                return response.json();
-            })
-            .then(data => {
-                setUserEmail(data.userEmail);
-                setData(data);
-            })
-            .catch(error => {
-                const text = `Failed to retrive user data. ${error.toString()}`;
-                setAlertMessageObj({text, "severity": "error", "duration": 10_000});
-                setAlertIsActive(true);
-            });
-    };
-
-
     const getMetadata = async () => {
         const requestOptions = {
             headers: {
@@ -104,7 +75,7 @@ export default function ReviewerMetadataForm() {
             }
         };
 
-        await fetch("http://127.0.0.1:5000/-metadata", requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-reviewer-metadata`, requestOptions)
             .then(function (response) {
                 return response.json();
             })
@@ -197,9 +168,6 @@ export default function ReviewerMetadataForm() {
         else if (type === "checkbox") {
             return <Checkbox inputSettings={inputSettings} />
         }
-        else if (type === "compound") {
-            return <Compound inputSettings={inputSettings} />
-        }
         else if (type === "fraction") {
             return <Fraction inputSettings={inputSettings} />
         }
@@ -247,7 +215,7 @@ export default function ReviewerMetadataForm() {
     // Fetch previously submitted  data on load.
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to top of page.
-        getData();
+        getMetadata();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Ensures that Form state and Form view are in sync. 
@@ -271,10 +239,8 @@ export default function ReviewerMetadataForm() {
                     { Object.keys(activeMetadata).length < 1 || Object.keys(answers).length === 0
                         ? <LoadingScreen />
                         : <>                   
-                            <label className="groupHeader" variant="h5">
-                                {"header1"}
-                            </label>
                             { questions.map((questionObj) => renderQuestion(questionObj)) }
+
                             <Button
                                 id="submit-button"
                                 type="submit"

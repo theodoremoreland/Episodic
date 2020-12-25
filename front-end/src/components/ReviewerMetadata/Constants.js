@@ -1,8 +1,8 @@
 export const questions = [
-    { "label": "", "type": "text"},
-    {"label": "", "type": "radio", "options": ["", "", ""]},
-    {"label": "", "type": "number"},
+    {"label": "Email", "type": "email"},
+    {"label": "Favorite Genre", "type": "radio", "options": ["Shonen", "Shoujo", "Seinen", "Josei", "Ecchi", "Harem", "Mecha", "Slice of Life", "Kodomomuke"]},
+    {"label": "Gender", "type": "radio", "options": ["Male", "Female", "Non-Binary"]},
+    {"label": "Age", "type": "number"},
     {"label": "", "type": "fraction"},
-    {"label": "", "label2": "How?", "type": "compound", "multiline": true},
     {"label": "", "type": "text", "multiline": true}
 ];
