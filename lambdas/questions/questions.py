@@ -23,7 +23,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'DoubleTextField'
             , 'questionGroup' : 'Anime Vs Manga'
             , 'hoverText' : 'Consider things like whether or not the chracters express distinct viewpoints, quirks, and motivations.'
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         },
         {
@@ -31,7 +31,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'DoubleTextField'
             , 'questionGroup' : 'Anime Vs Manga'
             , 'hoverText' : 'Animation and/or illustrations depending on the medium.'
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         },
         {
@@ -39,7 +39,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'DoubleTextField'
             , 'questionGroup' : 'Anime Vs Manga'
             , 'hoverText' : ''
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         },
         {
@@ -47,7 +47,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'SingleTextField'
             , 'questionGroup' : 'Anime'
             , 'hoverText' : ''
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         },
         {
@@ -55,7 +55,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'SingleTextField'
             , 'questionGroup' : 'Anime'
             , 'hoverText' : ''
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         },
         {
@@ -63,7 +63,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'Elaborate'
             , 'questionGroup' : 'Hype Train'
             , 'hoverText' : ''
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         },
         {
@@ -71,7 +71,7 @@ def lambda_handler(event, context):
             , 'inputType' : 'Elaborate'
             , 'questionGroup' : 'Hype Train'
             , 'hoverText' : ''
-            , 'required' : json.dumps(True)
+            , 'required' : json.dumps(False)
             , 'active' : json.dumps(True)
         }
     ]
