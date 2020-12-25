@@ -5,15 +5,12 @@
     margin-bottom: 400px !important;
 }
 
-#reviewHistoryTableContainer .pageTitle {
-    color: #3c3c3d !important;
-}
 
 /* TABLE HEADER */
 #reviewHistoryTableContainer .MuiDataGrid-colCell {
-    background-color:#f5f5f5;
-    color:#007360;
-    font-family: accent;
+    background-color:#4A4883;
+    color:#ffffff;
+    font-family: header;
     font-size: 1.1em;
 }
 
@@ -27,7 +24,7 @@
 }
 
 #reviewHistoryTableContainer .MuiDataGrid-row:nth-child(odd) {
-    background-color: #c8c8c8;
+    background-color: #9198ad;
     color: #3c3c3d;
     font-family: accent-light;
     font-size: 1.1em;
@@ -54,18 +51,24 @@
 #reviewHistoryTableContainer button.downloadButton {
     margin-top: -45px !important;
     margin-bottom: 25px !important;
-    background-color: #007360 !important;
+    background-color: #BC2628 !important;
     color: #f5f5f5 !important;
     font-family: accent !important;  
 }
 
+/* __________________ FOOTER ____________________________ */
+
 #reviewHistoryTableContainer p, .MuiDataGrid-rowCount {
-    color: #000000 !important;
+    color: #f5f5f5 !important;
     font-family: accent !important;  
 }
 
 .MuiTablePagination-actions button {
     color: rgb(0, 0, 0) !important
+}
+
+.MuiDataGrid-footer {
+    background-color: #4A4883;
 }
 
 
@@ -82,9 +85,13 @@ div.MuiFormControl-root.tableFilter {
 }
 
 .tableFilter .MuiFilledInput-root {
-    background-color: #ffffff;
+    background-color: #111111;
 }
 
 .tableFilter .MuiInputBase-input {
-    background: white !important;
+    background: #4A4883 !important;
 }
+
+#reviewHistoryTableContainer .MuiSelect-select option {
+    background-color: #BC2628;
+  }

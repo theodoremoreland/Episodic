@@ -1,5 +1,5 @@
 // React
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Material UI
 import { DataGrid } from '@material-ui/data-grid';
@@ -114,7 +114,8 @@ export default function ReviewHistoryTable() {
           'Content-Type': 'application/json'
         }
     };
-    await fetch("http://localhost:5000/absences-history", requestOptions)
+
+    await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-reviews`, requestOptions)
       .then(function (response) {
         if (response.status !== 200) {
             return Promise.reject(`${response.status} ${response.statusText}`);
@@ -123,8 +124,8 @@ export default function ReviewHistoryTable() {
         return response.json();
       })
       .then(response => {
-          console.log(response);
           const entries = response; 
+
           if (entries.length === 0) {
             const text = "No data"
             setColumns([]);
@@ -146,16 +147,16 @@ export default function ReviewHistoryTable() {
   };
 
 
-  const addSeries = () => {
+  const addSeriesAndUserOptionsForFilter = () => {
     if (rows === undefined) { return undefined; }
     const seriesInEntries = rows.map((row) => row["Series"]);
-    const usersInEntries = rows.map((row) => row["Users"]);
+    const usersInEntries = rows.map((row) => row["Email"]);
     setSeriesFilterOptions(new Set(seriesInEntries));
     setUserFilterOptions(new Set(usersInEntries));
   };
 
 
-  const filterRows = useMemo(() => {
+  const filterRows = () => {
     let filteredRows = rows;
 
     filteredRows = seriesFilterValue !== "All"
@@ -163,37 +164,37 @@ export default function ReviewHistoryTable() {
       : filteredRows;
 
     filteredRows = userFilterValue !== "All"
-      ? filteredRows.filter((row) => row["User"] === userFilterValue || (row["User"] === null && userFilterValue === "null"))
+      ? filteredRows.filter((row) => row["Email"] === userFilterValue || (row["Email"] === null && userFilterValue === "null"))
       : filteredRows;
 
     return filteredRows
-  }, [seriesFilterValue, userFilterValue, rows]);
+  };
 
   
   const createCSV = (filteredRows) => {
-    let csvString = "data:text/csv;charset=utf-8, "; // Trailing space is necessary.
+    let csvString = "data:text/csv;charset=utf-8,"; // Trailing space is necessary.
 
     if (filteredRows[0] === undefined) { return csvString += "No data"; };
     
     let csvColumns = [];
     
-    for (let row of filteredRows) {
+    for (const row of filteredRows) {
         const rowKeys = Object.keys(row);
         csvColumns = new Set([...csvColumns, ...rowKeys]);
-    }
+    };
 
     csvColumns = [...csvColumns];
-    csvString += csvColumns.join(",") + "\n";
+    csvString += (csvColumns.join(",") + "\n");
 
-    for (let row of filteredRows) {
+    for (const row of filteredRows) {
       let rowData = [];
-      for (let csvColumn of csvColumns) {
+      for (const csvColumn of csvColumns) {
         rowData.push(row[csvColumn]); 
-      }
+      };
       csvString += rowData.join(",") + "\n";
     };
 
-    return csvString;
+    return encodeURI(csvString);
   };
 
 
@@ -205,7 +206,7 @@ export default function ReviewHistoryTable() {
 
   // Add districts and schools to state for filter options after rows have been fetched.
   useEffect(() => {
-    addSeries();
+    addSeriesAndUserOptionsForFilter();
   }, [rows]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
@@ -233,7 +234,7 @@ export default function ReviewHistoryTable() {
               </FormControl>
 
               <FormControl className="tableFilter" variant="filled">
-                <InputLabel htmlFor="filled-age-native-simple">Filter By User</InputLabel>
+                <InputLabel htmlFor="filled-age-native-simple">Filter By Reviewer</InputLabel>
                 <Select
                   native
                   value={userFilterValue}
@@ -246,7 +247,7 @@ export default function ReviewHistoryTable() {
 
               {/* Download Button */}
               <div className="link">
-                <a href={createCSV(filterRows())} download="episodic-review-history.csv">
+                <a href={createCSV(filterRows())} download="reviews.csv">
                   <Button
                     className="downloadButton"
                     variant="text"
