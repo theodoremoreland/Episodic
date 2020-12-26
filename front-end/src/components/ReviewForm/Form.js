@@ -45,7 +45,7 @@ export default function ReviewForm() {
     
         questions.forEach(obj => {
             if (obj.inputType === "DoubleDropdown") {
-                placeholderAnswers[obj.question] = { "anime" : 1, "manga" : 1};
+                placeholderAnswers[obj.question] = { "anime" : null, "manga" : null };
             }
             else if (obj.question === "Email") {
                 placeholderAnswers[obj.question] = userEmail;
@@ -159,7 +159,7 @@ export default function ReviewForm() {
             return <Dropdown inputSettings={inputSettings} options={series} />
         }
         else if (inputType === "Dropdown") {
-            return <Dropdown inputSettings={inputSettings} options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
+            return <Dropdown inputSettings={inputSettings} options={[null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]} />
         }
     };
 

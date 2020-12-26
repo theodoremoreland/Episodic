@@ -18,7 +18,18 @@ export default function DoubleDropdown({inputSettings}) {
         setAnswers
     } = inputSettings;
 
-   // alert(JSON.stringify(answers[question]));
+    const handleChange = (name, value) => {
+        if (isNaN(value)) {
+            value = null;
+        };
+
+        if (name === "Anime") {
+            setAnswers({...answers, [question] : {...answers[question], "anime": value} })
+        }
+        else {
+            setAnswers({...answers, [question] : {...answers[question], "manga": value} })
+        }; 
+    };
 
     return (  
             <Grid container spacing={2}>
@@ -36,14 +47,15 @@ export default function DoubleDropdown({inputSettings}) {
                     {
                         answers[question] !== undefined
                         ?   <FormControl className="formDropdown" variant="filled"> 
-                            <InputLabel htmlFor="filled-age-native-simple">Anime</InputLabel>
+                            <InputLabel id="selectAnimeRating" htmlFor="filled-age-native-simple">Anime</InputLabel>
                                 <Select
+                                    labelId="selectAnimeRating"
                                     native
                                     value={answers[question].anime}
-                                    onChange={(event) => setAnswers({...answers, [question] : {...answers[question], "anime": event.target.value} })}
+                                    onChange={(event) => handleChange("Anime", event.target.value)}
                                     label="Anime"
                                 >
-                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => <option key={num} value={num}>{num}</option>)}
+                                    {[null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => <option key={num || "null"} value={num}>{num || "Have not watched corresponding episode(s)"}</option>)}
                                 </Select>
                             </FormControl>
                         : ""
@@ -55,14 +67,15 @@ export default function DoubleDropdown({inputSettings}) {
                     {
                         answers[question] !== undefined
                         ?   <FormControl className="formDropdown" variant="filled"> 
-                            <InputLabel htmlFor="filled-age-native-simple">Manga</InputLabel>
+                            <InputLabel id="selectMangaRating" htmlFor="filled-age-native-simple">Manga</InputLabel>
                                 <Select
+                                    labelId="selectMangaRating"
                                     native
                                     value={answers[question].manga}
-                                    onChange={(event) => setAnswers({...answers, [question] : {...answers[question], "manga": event.target.value} })}
+                                    onChange={(event) => handleChange("Manga", event.target.value)}
                                     label="Manga"
                                 >
-                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => <option key={num} value={num}>{num}</option>)}
+                                    {[null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => <option key={num || "null"} value={num}>{num || "Have not read corresponding chapter(s)"}</option>)}
                                 </Select>
                             </FormControl>
                         : ""

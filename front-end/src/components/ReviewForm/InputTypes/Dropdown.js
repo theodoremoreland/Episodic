@@ -16,6 +16,16 @@ export default function Dropdown({inputSettings, options}) {
         setAnswers
     } = inputSettings;
 
+    const nullReplacement = question !== "Series" ? "Have not watched corresponding episode(s)" : null;
+
+    const handleChange = (value) => {
+        if (isNaN(value)) {
+            value = null;
+        };
+
+        setAnswers({...answers, [question]: value});
+    };
+
     return (
         <>
             <Tooltip className="hoverText" title={hoverText} width={"600px"} arrow>
@@ -27,9 +37,9 @@ export default function Dropdown({inputSettings, options}) {
             <Select
                 native
                 value={answers[question]}
-                onChange={(event) => setAnswers({...answers, [question]: event.target.value})}
+                onChange={(event) => handleChange(event.target.value)}
             >
-                {options.map((option) => <option key={option} value={option}>{option}</option>)}
+                {options.map((option) => <option key={option} value={option}>{option || nullReplacement}</option>)}
             </Select>
             </FormControl>
         </>
