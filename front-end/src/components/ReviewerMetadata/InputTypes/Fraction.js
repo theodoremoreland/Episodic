@@ -25,12 +25,12 @@ export default function FractionWrapper({inputSettings}) {
                 {/* Field for 'Students' */}
                 <Grid item xs={4} className="numerator">
                     <TextField
-                            label="Students"
+                            label="Anime"
                             variant="standard"
                             type="number"
                             InputProps={{ inputProps: { min: 0 } }}
                             defaultValue={defaultValue}
-                            onChange={(event) => setAnswers({...answers, [label] : {...answers[label], "students": event.target.value || null}})}
+                            onChange={(event) => setAnswers({...answers, [label] : {...answers[label], "anime": event.target.value || null}})}
                             // event.target.value becomes an empty string if users delete number after adding it
                             // , thus '|| null' is needed to replace empty string with null. 
                     />
@@ -40,15 +40,15 @@ export default function FractionWrapper({inputSettings}) {
                             {"/"}
                     </Typography>
                 </Grid>
-                {/* Field for 'Teachers' */}
+                {/* Field for 'Manga' */}
                 <Grid item xs={4} className="denominator">
                     <TextField
-                        label="Teachers"
+                        label="Manga"
                         variant="standard"
                         type="number"
                         InputProps={{ inputProps: { min: 0 } }}
                         defaultValue={defaultValue2}
-                        onChange={(event) => setAnswers({...answers, [label] : {...answers[label], "teachers": event.target.value || null}}) }
+                        onChange={(event) => setAnswers({...answers, [label] : {...answers[label], "manga": event.target.value || null}}) }
                         // event.target.value becomes an empty string if users delete number after adding it
                         // , thus '|| null' is needed to replace empty string with null.
                     />

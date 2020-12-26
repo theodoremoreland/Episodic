@@ -23,7 +23,7 @@ import { questions } from './Constants';
 
 export default function ReviewerMetadataForm() {
     // USER DATA
-    const userEmail = "dev@test.dev";
+    const userEmail = "dev@demo.dev";
     const [activeMetadata, setActiveMetaData] = useState({});
     // FORM STATE
     const [answers, setAnswers] = useState({});
@@ -45,14 +45,11 @@ export default function ReviewerMetadataForm() {
             const label = question.label;
             const type = question.type;
 
-            if (label === "Email Address") {
+            if (label === "Email") {
                 answerPlaceholders[label] = userEmail;
             }
-            else if (type === "compound" && typeof(activeMetadata[label]) !== "object") {
-                answerPlaceholders[label] = {"Yes/No": null, "How?": null};
-            }
             else if (type === "fraction" && typeof(activeMetadata[label]) !== "object") {
-                answerPlaceholders[label] = {"TV": null, "Literature": null};
+                answerPlaceholders[label] = {"anime": null, "manga": null};
             }
             else if (type === "checkbox" && !Array.isArray(activeMetadata[label])) {
                 answerPlaceholders[label] = [];
@@ -96,7 +93,7 @@ export default function ReviewerMetadataForm() {
 
 
     const fieldShouldBeDisabled = (label) => {
-        return label === "Reviwer" || label === "Email Address";
+        return label === "Reviewer" || label === "Email";
     };
 
 
@@ -120,15 +117,15 @@ export default function ReviewerMetadataForm() {
         }
         else if (type === "fraction") {
             try {
-                defaultValue = activeMetadata[label]["TV"];
-                defaultValue2 = activeMetadata[label]["Literature"];
+                defaultValue = activeMetadata[label]["anime"];
+                defaultValue2 = activeMetadata[label]["manga"];
             }
             catch {
                 defaultValue = undefined;
                 defaultValue2 = undefined;
             }    
         }
-        else if (label === "Email Address") {
+        else if (label === "Email") {
             defaultValue = userEmail;
         }
         else {
@@ -194,7 +191,7 @@ export default function ReviewerMetadataForm() {
             body : newSubmission,
         };
         
-        await fetch("http://127.0.0.1:5000/-metadata", requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/submit-reviewer-metadata`, requestOptions)
             .then(async response => {
 
                 if (response.status !== 201) {

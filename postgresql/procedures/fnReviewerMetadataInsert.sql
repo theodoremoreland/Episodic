@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION "fnReviewerMetadataInsert"(
-  _answers json,
+  _metadata json,
   _email text)
     RETURNS void
     LANGUAGE 'plpgsql'
@@ -7,16 +7,18 @@ CREATE OR REPLACE FUNCTION "fnReviewerMetadataInsert"(
     COST 100
     VOLATILE
 AS $BODY$
-declare _reviewer_id integer;
-declare _enteredby_id integer;
+DECLARE _reviewer_id integer;
+DECLARE _enteredby_id integer;
 
 BEGIN
   _reviewer_id = (select reviewer_id from reviewers where emailaddress = _email);
-  UPDATE reviewermetadata
+
+  UPDATE reviewer_metadata
   SET active = FALSE
   WHERE active = TRUE
-  AND reviewermetadata.reviewer_id = _reviewer_id;
-  INSERT INTO reviewermetadata(reviewer_id, enteredby_id, metadata, active)
-  VALUES(_reviewer_id, _enteredby_id, _answers, TRUE);
+    AND reviewer_metadata.reviewer_id = _reviewer_id;
+    
+  INSERT INTO reviewer_metadata(reviewer_id, metadata, active)
+  VALUES(_reviewer_id,  _metadata, TRUE);
 END;
 $BODY$;
