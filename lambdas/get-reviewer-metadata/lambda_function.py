@@ -18,13 +18,14 @@ print("You are connected to - ", record, "\n")
 
 def lambda_handler(event, context):
     statusCode = 200
+    email = event["queryStringParameters"]['email']
     
     try:
-        cursor.execute("SELECT name FROM public.series;")
-        results = cursor.fetchall()
-        results = [result[0] for result in results]
+        cursor.execute(f"SELECT metadata::jsonb FROM public.reviewer_metadata WHERE active = true AND reviewer_id = (SELECT reviewer_id FROM public.reviewers WHERE emailaddress = '{email}');")
+        results = cursor.fetchone()
+        results = results[0]
     except Exception as e:
-        results = e
+        results = f"SQL Error: {e}"
         statusCode = 500
     
     return {

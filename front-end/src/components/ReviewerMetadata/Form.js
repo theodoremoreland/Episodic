@@ -20,7 +20,6 @@ import './Form.css';
 // Constants
 import { questions } from './Constants';
 
-
 export default function ReviewerMetadataForm() {
     // USER DATA
     const userEmail = "dev@demo.dev";
@@ -67,20 +66,21 @@ export default function ReviewerMetadataForm() {
 
     const getMetadata = async () => {
         const requestOptions = {
+            method: 'GET',
             headers: {
               'Content-Type': 'application/json'
             }
         };
 
-        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-reviewer-metadata`, requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-reviewer-metadata?email=${userEmail}`, requestOptions)
             .then(function (response) {
-                return response.json();
-            })
-            .then(response => {
-                if (response === "Nothing") {
+                if (response.status !== 200) {
                     return Promise.reject(`${response.status} ${response.statusText}`);
                 };
 
+                return response.json();
+            })
+            .then(response => {
                 setActiveMetaData(response);
             })
             .catch(error => {
@@ -104,16 +104,6 @@ export default function ReviewerMetadataForm() {
 
         if (type === "number" && isNaN(activeMetadata[label])) {
             defaultValue = null;
-        }
-        else if (type === "compound") {
-            try {
-                defaultValue = activeMetadata[label]["Yes/No"];
-                defaultValue2 = activeMetadata[label]["How?"];
-            }
-            catch {
-                defaultValue = undefined;
-                defaultValue2 = undefined;
-            }    
         }
         else if (type === "fraction") {
             try {
