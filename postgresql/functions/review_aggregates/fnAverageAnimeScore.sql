@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION "fnAverageAnimeScore"(
-  _series text, questions text[])
+  _series text)
     RETURNS DECIMAL
     LANGUAGE 'plpgsql'
 
@@ -18,9 +18,7 @@ BEGIN
           (value::jsonb ->> 'anime')::int
         )
     FROM v_anime_vs_manga
-    WHERE
-        key = ANY(questions)
-        AND series_id = _series_id
+    WHERE series_id = _series_id
   );
   _view2_average = (SELECT AVG(value::int) FROM v_anime WHERE series_id = _series_id);
 
