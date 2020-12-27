@@ -4,30 +4,30 @@
 
 #registrationForm label {
   font-family: accent !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 #registrationForm textarea {
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 #registrationForm input {
   font-family: accent-light !important; 
   /* Changes size of input box */
   margin-top: 0px !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 #registrationForm .groupHeader {
     font-family: accent !important;
     font-size: 1.4em !important;
-    color: #c8c8c8 !important;
+    color: #f8f8f8 !important;
     margin-top: 4%;
     display: block !important;
 }
 
 #registrationForm .fractionTitle {
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 .registrationTextField {
@@ -45,13 +45,13 @@
 .registrationCheckbox legend {
   font-family: accent !important;
   font-size: 1em !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 .registrationCheckbox label {
   font-family: accent !important;
   width: auto !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 
@@ -64,40 +64,22 @@
 
 .registrationRadioGroup legend {
   font-family: accent !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
 .MuiRadio-colorSecondary.Mui-checked {
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
 }
 
-
-/* __________________ COMPOUND ____________________________ */
-
-.registrationCompoundRadioGroup {
-  display: inline;
-  width: 50%;
-  margin-top: 32px !important;
+:checked {
+  background-color: #f8f8f8 !important;
 }
-
-.registrationCompoundRadioGroup legend {
-  font-family: accent !important;
-  color: #c8c8c8 !important;
-}
-
-.registrationCompoundTextField {
-  display: inline-block !important;
-  width: 100% !important;
-  margin-top: -7px !important;
-  margin-bottom: 32px !important;
-}
-
 
 /* __________________ CONFIRMATION PROMPT ____________________________ */
 
 #confirmationTitle {
   font-family: header !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
   margin-bottom: 0% !important;
 }
   
@@ -107,7 +89,7 @@
 
 .confirmationQuestion {
   font-family: header !important;
-  color: #c8c8c8 !important;
+  color: #f8f8f8 !important;
   margin-bottom: 0% !important;
 }
 

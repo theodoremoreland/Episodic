@@ -42,6 +42,11 @@ html, body {
     font-family: accent !important;
 }
 
+.MuiTypography-colorPrimary {
+    font-family:  accent !important;
+    color: #4A4883 !important;
+}
+
 button {
     font-family: header !important;
 }
