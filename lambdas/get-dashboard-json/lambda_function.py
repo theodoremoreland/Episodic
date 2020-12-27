@@ -1,4 +1,5 @@
 import json
+import re
 import pg8000
 
 from config import (user, password, host, port)
@@ -30,14 +31,14 @@ def lambda_handler(event, context):
         cursor.execute(f"""
             SELECT "fnAverageReviewScorePerWeekBySeries"('{series}');
         """)
-        results = cursor.fetchone()
-        review_scores_per_week_by_series = results[0]
+        results = cursor.fetchall()
+        review_scores_per_week_by_series = [result[0].replace("(", "").replace(")", "").split(",") for result in results]
 
         cursor.execute(f"""
             SELECT "fnAverageReviewScorePerWeek"();
         """)
-        results = cursor.fetchone()
-        review_scores_per_week = results[0]
+        results = cursor.fetchall()
+        review_scores_per_week = [result[0].replace("(", "").replace(")", "").split(",") for result in results]
         
         dashboard_data = {
             "main_dashboard_data": main_dashboard_data

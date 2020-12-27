@@ -11,24 +11,24 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const DonutChart = ({ total }) => {
+const DonutChart = ({ animeReviewsCount, mangaReviewsCount }) => {
   const classes = useStyles();
   const theme = useTheme();
 
   const data = {
     datasets: [
       {
-        data: [total, total],
+        data: [animeReviewsCount, mangaReviewsCount],
         backgroundColor: [
-          '#345774',
-          '#d2ccc4'
+          '#4A4883',
+          '#BC2628'
         ],
         borderWidth: 8,
         borderColor: colors.common.white,
         hoverBorderColor: colors.common.white
       }
     ],
-    labels: ['s', '']
+    labels: ['Anime Reviews', 'Manga Reviews']
   };
 
   const options = {
@@ -55,22 +55,22 @@ const DonutChart = ({ total }) => {
 
   const positive = [
     {
-      title: 's',
-      value: total,
+      title: 'Anime Reviews',
+      value: animeReviewsCount,
       icon: SupervisorAccountIcon,
-      color: '#345774'
+      color: '#4A4883'
     },
     {
-      title: '',
-      value: total,
+      title: 'Manga Reviews',
+      value: mangaReviewsCount,
       icon: PeopleAltIcon,
-      color: '#d2ccc4'
+      color: '#BC2628'
     }
   ];
 
   return (
     <Card className={clsx(classes.root)}>
-      <CardHeader className="cardTitle" title="Cumulative  (s vs )" />
+      <CardHeader className="cardTitle" title="Cumulative Reviews" />
       <Divider />
       <CardContent>
         <Box height={300} position="relative">

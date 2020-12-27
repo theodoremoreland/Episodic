@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const GroupedBarChart = ({ series, total }) => {
+const GroupedBarChart = ({ series, reviewScoresPerWeek, reviewScoresPerWeekBySeries }) => {
   const classes = useStyles();
   const theme = useTheme();
   const labels = [];
@@ -22,14 +22,24 @@ const GroupedBarChart = ({ series, total }) => {
     categoryPercentage: 0.5
   };
 
-  for (let i = 0; i < series.length; i++) {
-    const weekForseries = series[i];
-    const weekForTotal = total[i];
-    
-    labels.push(weekForseries.f1);
-    seriesData.push(weekForseries.f2);
-    totalData.push(weekForTotal.f2);
+  for (let i = 0; i < reviewScoresPerWeek.length; i++) {
+    const weekForTotal = reviewScoresPerWeek[i];
+    const dateForTotal = weekForTotal[0];
+    const ratingForTotalDate = weekForTotal[1];
+
+    for (let j = 0; j < reviewScoresPerWeekBySeries.length; j++) {
+      const weekForseries = reviewScoresPerWeekBySeries[j];
+      const dateForSeries = weekForseries[0];
+      const ratingForSeriesDate = weekForseries[1];
+
+      if (dateForSeries === dateForTotal) {
+        labels.push(dateForSeries);
+        seriesData.push(ratingForSeriesDate || 0);
+        totalData.push(ratingForTotalDate || 0);
+      };
+    };
   }
+
 
   const yAxisMax = () => {
     let max = Math.max(...seriesData, ...totalData);
@@ -40,15 +50,15 @@ const GroupedBarChart = ({ series, total }) => {
   const data = {
     datasets: [
       {
-        backgroundColor: '#345774',
+        backgroundColor: '#4A4883',
         data: seriesData.slice(0, 6).reverse(),
-        label: 'My series',
+        label: series,
         ...barOptions
       },
       {
-        backgroundColor: '#d2ccc4',
+        backgroundColor: '#BC2628',
         data: totalData.slice(0, 6).reverse(),
-        label: 'All seriess',
+        label: 'All series',
         ...barOptions
       }
     ],
@@ -110,7 +120,7 @@ const GroupedBarChart = ({ series, total }) => {
 
   return (
     <Card className={clsx(classes.root)}>
-      <CardHeader className="cardTitle" title="Cumulative Cases (Per 100)" />
+      <CardHeader className="cardTitle" title="Averages Comparison" />
       <Divider />
       <CardContent>
         <Box height={450} position="relative">

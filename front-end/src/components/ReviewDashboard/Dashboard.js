@@ -6,36 +6,70 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import { Container, Grid, Typography } from '@material-ui/core';
 
 // Custom components
+import Alert from '../Alert';
+import Count from './Count';
 import KPI from './KPI';
 import GroupedBarChart from './GroupedBarChart';
 import DonutChart from './DonutChart';
+import Dropdown from './Dropdown';
 
 // Styles
 import './Container.css';
 
 function DashboardContainer() {
-  const [filterSchoolValue, setFilterSchoolValue] = useState(undefined);
+  const [series, setSeries] = useState(undefined);
+  const [selectedSeries, setSelectedSeries] = useState(undefined);
 
-  const [schoolPopulation, setSchoolPopulation] = useState(undefined);
+  const [animeReviewsCount, setAnimeReviewsCount] = useState(undefined);
+  const [averageAnimeScore, setAverageAnimeScore] = useState(undefined);
+  const [averageAnimeScoreChangeFromLastWeek, setAverageAnimeScoreChangeFromLastWeek] = useState(undefined);
+  const [averageAnimeScoreSinceWeekPrior, setAverageAnimeScoreSinceWeekPrior] = useState(undefined);
 
-  const [schoolStudentCases, setSchoolStudentCases] = useState(undefined);
-  const [schoolFacultyCases, setSchoolFacultyCases] = useState(undefined);
-  const [schoolPostiveCases, setSchoolPostiveCases] = useState(undefined);
-  const [schoolCasesSinceWeekPrior, setSchoolCasesSinceWeekPrior] = useState(undefined);
-  const [schoolCasesChangeFromLastWeek, setSchoolCasesChangeFromLastWeek] = useState(undefined);
+  const [mangaReviewsCount, setMangaReviewsCount] = useState(undefined);
+  const [averageMangaScore, setAverageMangaScore] = useState(undefined);
+  const [averageMangaScoreChangeFromLastWeek, setAverageMangaScoreChangeFromLastWeek] = useState(undefined);
+  const [averageMangaScoreSinceWeekPrior, setAverageMangaScoreSinceWeekPrior] = useState(undefined);
 
-  const [schoolCasesDueToExposure, setSchoolCasesDueToExposure] = useState(undefined);
-  const [schoolCasesDueToExposureSinceWeekPrior, setSchoolCasesDueToExposureSinceWeekPrior] = useState(undefined);
-  const [schoolCasesDueToExposureChangeFromLastWeek, setSchoolCasesDueToExposureChangeFromLastWeek] = useState(undefined);
+  const [seriesReviewCount, setSeriesReviewCount] = useState(undefined);
+  const [latestSeriesReviewDate, setLatestSeriesReviewDate] = useState(undefined);
 
-  const [schoolQuarantined, setSchoolQuarantined] = useState(undefined);
-  const [schoolQuarantinedSinceWeekPrior, setSchoolQuarantinedSinceWeekPrior] = useState(undefined);
-  const [schoolQuarantinedChangeFromLastWeek, setSchoolQuarantinedChangeFromLastWeek] = useState(undefined);
+  const [reviewScoresPerWeekBySeries, setReviewScoresPerWeekBySeries] = useState(undefined);
+  const [reviewScoresPerWeek, setReviewScoresPerWeek] = useState(undefined);
 
-  const [schoolLastReportDate, setSchoolLastReportDate] = useState(undefined);
+  // ALERT STATE
+  const [alertIsActive, setAlertIsActive] = useState(false);
+  const [alertMessageObj, setAlertMessageObj] = useState({text: "", severity: "", duration: 0});
 
-  const [schoolPerHundred, setSchoolPerHundred] = useState(undefined);
-  const [totalPerHundred, setTotalPerHundred] = useState(undefined);
+
+  const getSeries = async () => {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    };
+
+    await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/series`, requestOptions)
+        .then(function (response) {
+            if (response.status !== 200) {
+                return Promise.reject(`${response.status} ${response.statusText}`);
+            };
+            return response.json();
+        })
+        .then(function (data) {
+            setSeries(data);
+            setSelectedSeries(data[0]);
+        })
+        .catch(error => {
+            const text = `Failed to retrive user series data. ${error.toString()}`;
+            setAlertMessageObj({
+                text,
+                "severity": "error",
+                "duration": 10_000
+            });
+            setAlertIsActive(true);
+        });
+  };
 
   const getDashboard = async () => {
     const requestOptions = {
@@ -44,7 +78,7 @@ function DashboardContainer() {
         }
     };
 
-    await fetch("http://127.0.0.1:5000/dashboard", requestOptions)
+    await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-dashboard-json?series=${selectedSeries}`, requestOptions)
       .then(function (response) {
         if (response.status !== 200) {
             return Promise.reject(`${response.status} ${response.statusText}`);
@@ -53,28 +87,21 @@ function DashboardContainer() {
         return response.json();
       })
       .then(response => {
-        setFilterSchoolValue(response.case_data.school || '???');
+        setAnimeReviewsCount(response.main_dashboard_data.anime_reviews_count || 0);
+        setAverageAnimeScore(response.main_dashboard_data.average_anime_score || 0);
+        setAverageAnimeScoreChangeFromLastWeek(response.main_dashboard_data.avergae_anime_score_change_from_last_week || 0);
+        setAverageAnimeScoreSinceWeekPrior(response.main_dashboard_data.average_anime_score_since_week_prior || 0);
 
-        setSchoolPopulation(response.case_data.school_population || 0);
+        setMangaReviewsCount(response.main_dashboard_data.manga_reviews_count || 0);
+        setAverageMangaScore(response.main_dashboard_data.average_manga_score || 0);
+        setAverageMangaScoreChangeFromLastWeek(response.main_dashboard_data.average_manga_score_change_from_last_week || 0);
+        setAverageMangaScoreSinceWeekPrior(response.main_dashboard_data.average_manga_score_since_week_prior || 0);
 
-        setSchoolStudentCases(response.case_data.school_student_cases || 0);
-        setSchoolFacultyCases(response.case_data.school_faculty_cases || 0);
-        setSchoolPostiveCases(response.case_data.all_school_cases || 0);
-        setSchoolCasesSinceWeekPrior(response.case_data.school_cases_since_week_prior || 0);
-        setSchoolCasesChangeFromLastWeek(response.case_data.school_cases_change_from_last_week || 0);
+        setSeriesReviewCount(response.main_dashboard_data.series_review_count || 0);
+        setLatestSeriesReviewDate(response.main_dashboard_data.latest_series_review_date || 0);
 
-        setSchoolCasesDueToExposure(response.case_data.school_cases_due_to_exposure || 0);
-        setSchoolCasesDueToExposureSinceWeekPrior(response.case_data.school_cases_due_to_exposure_since_week_prior || 0);
-        setSchoolCasesDueToExposureChangeFromLastWeek(response.case_data.school_cases_due_to_exposure_change_from_last_week || 0);
-
-        setSchoolQuarantined(response.case_data.school_quarantined || 0);
-        setSchoolQuarantinedSinceWeekPrior(response.case_data.school_quarantined_since_week_prior || 0);
-        setSchoolQuarantinedChangeFromLastWeek(response.case_data.school_quarantined_change_from_last_week || 0);
-
-        setSchoolLastReportDate(response.case_data.school_last_report_date || 'N/A');
-
-        setSchoolPerHundred(response.school_per100);
-        setTotalPerHundred(response.total_per100);
+        setReviewScoresPerWeekBySeries(response.review_scores_per_week_by_series);
+        setReviewScoresPerWeek(response.review_scores_per_week);
       })
       .catch(error => {
           const text = `Error receiving dashboard data. ${error.toString()}.`;
@@ -84,68 +111,78 @@ function DashboardContainer() {
 
   useEffect(() => {
     window.scrollTo(0, 0); 
-    getDashboard();
+    getSeries();
   }, []);
+
+  useEffect(() => { 
+    getDashboard();
+  }, [selectedSeries]);
 
   return (
     <Container maxWidth={false}>
       <Grid container spacing={3}>
         <Grid item id="dashboardTitleContainer" xs={12}>
-          { filterSchoolValue === undefined
+          { latestSeriesReviewDate === undefined
               ? <Skeleton variant="rect" height={40} width={"30%"}/>
               : <div>
                   <Typography id="dashboardTitle">
-                    Weekly Metrics for {filterSchoolValue}
+                    Weekly Metrics for {selectedSeries}
                   </Typography>
                   <Typography id="dashboardSubTitle">
-                    Last Report: {schoolLastReportDate}
+                    Newest episode reviewed: {latestSeriesReviewDate}
                   </Typography>
                 </div>
           }
         </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+        <Grid item xs={12} sm={6} lg={3}>
           {
-            schoolPostiveCases === undefined || schoolCasesSinceWeekPrior === undefined || schoolCasesChangeFromLastWeek === undefined
-              ? <Skeleton id="input" variant="rect" height={200}/>
-              : <KPI totalPostiveCases = {schoolPostiveCases} schoolCasesSinceWeekPrior = {schoolCasesSinceWeekPrior} KPIChangeFromLastWeek = {schoolCasesChangeFromLastWeek} />
+            averageAnimeScore === undefined || averageAnimeScoreChangeFromLastWeek === undefined || averageAnimeScoreSinceWeekPrior === undefined
+            ? <Skeleton id="input" variant="rect" height={200}/>
+            : <KPI title={"Average Anime Rating"} average={averageAnimeScore} changeFromLastWeek={averageAnimeScoreChangeFromLastWeek} sinceWeekPrior={averageAnimeScoreSinceWeekPrior} />
           }
         </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+        <Grid item xs={12} sm={6} lg={3}>
           {
-            schoolCasesDueToExposure === undefined || schoolCasesDueToExposureSinceWeekPrior === undefined || schoolCasesDueToExposureChangeFromLastWeek === undefined
+            averageMangaScore === undefined || averageMangaScoreChangeFromLastWeek === undefined || averageMangaScoreSinceWeekPrior === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <KPI KPIDueToExposure = {schoolCasesDueToExposure} schoolCasesDueToExposureSinceWeekPrior = {schoolCasesDueToExposureSinceWeekPrior} KPIDueToExposureChangeFromLastWeek = {schoolCasesDueToExposureChangeFromLastWeek} />
+            : <KPI title={"Average Manga Rating"} average={averageMangaScore} changeFromLastWeek={averageMangaScoreChangeFromLastWeek} sinceWeekPrior={averageMangaScoreSinceWeekPrior} />
           }
         </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+        <Grid item xs={12} sm={6} lg={3}>
           {
-            schoolQuarantined === undefined || schoolQuarantinedSinceWeekPrior === undefined || schoolQuarantinedChangeFromLastWeek === undefined
+            seriesReviewCount === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <KPI KPI = {schoolQuarantined} schoolQuarantinedSinceWeekPrior = {schoolQuarantinedSinceWeekPrior} KPIChangeFromLastWeek = {schoolQuarantinedChangeFromLastWeek} />
+            : <Count count = {seriesReviewCount} />
           }
         </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+        <Grid item xs={12} sm={6} lg={3}>
           {
-            schoolPopulation === undefined
+            series === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <KPI totalPopulation = {schoolPopulation} />
+            : <Dropdown series={series} selectedSeries={selectedSeries} setSelectedSeries={setSelectedSeries} />
           }
         </Grid>
         <Grid item lg={8} md={12} xl={9} xs={12}>
           {
-            schoolPerHundred === undefined || totalPerHundred === undefined
+            reviewScoresPerWeek === undefined || reviewScoresPerWeekBySeries === undefined
             ? <Skeleton id="input" variant="rect" height={600}/>
-            : <GroupedBarChart schoolPerHundred = {schoolPerHundred} totalPerHundred = {totalPerHundred} />
+            : <GroupedBarChart series={selectedSeries} reviewScoresPerWeek={reviewScoresPerWeek} reviewScoresPerWeekBySeries={reviewScoresPerWeekBySeries} />
           }
         </Grid>
-        <Grid item lg={4} md={6} xl={3} xs={12}>
+        <Grid itemmd={6} xl={3} xs={12}>
           {
-            schoolStudentCases === undefined || schoolFacultyCases === undefined
+            animeReviewsCount === undefined || mangaReviewsCount === undefined
             ? <Skeleton id="input" variant="rect" height={600}/> 
-            : <DonutChart totalStudentCases = {schoolStudentCases} totalFacultyCases = {schoolFacultyCases} />
+            : <DonutChart animeReviewsCount = {animeReviewsCount} mangaReviewsCount = {mangaReviewsCount} />
           }
         </Grid>
       </Grid>
+
+      <Alert 
+                alertMessageObj={alertMessageObj}
+                alertIsActive={alertIsActive}
+                setAlertIsActive={setAlertIsActive}
+            />
     </Container>
   );
 };

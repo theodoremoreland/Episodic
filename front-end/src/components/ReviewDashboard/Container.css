@@ -1,6 +1,6 @@
 .cardTitle, .cardTitle .MuiTypography-h5 {
    font-family: header !important;
-   color: #345774;
+   color: #4A4883;
 }
 
 .cardSubtitle, .KPI, .cardCaption {
@@ -33,4 +33,8 @@
    font-weight: 700;
    float: right;
    margin-right: 15px;
+}
+
+.dashboardDropdown .MuiInputBase-input, .dashboardDropdown .MuiFormLabel-root {
+   color: #000 !important;
 }
