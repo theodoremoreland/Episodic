@@ -18,14 +18,34 @@ print("You are connected to - ", record, "\n")
 
 def lambda_handler(event, context):
     statusCode = 200
-    email = event["queryStringParameters"]['email']
+    series = event["queryStringParameters"]['series']
     
     try:
-        cursor.execute(f"SELECT metadata::jsonb FROM public.reviewer_metadata WHERE active = true AND reviewer_id = (SELECT reviewer_id FROM public.reviewers WHERE emailaddress = '{email}');")
+        cursor.execute(f"""
+            SELECT "fnBuildDashboardJSON"('{series}');
+        """)
         results = cursor.fetchone()
-        results = results[0]
+        main_dashboard_data = results[0]
+
+        cursor.execute(f"""
+            SELECT "fnAverageReviewScorePerWeekBySeries"('{series}');
+        """)
+        results = cursor.fetchone()
+        review_scores_per_week_by_series = results[0]
+
+        cursor.execute(f"""
+            SELECT "fnAverageReviewScorePerWeek"();
+        """)
+        results = cursor.fetchone()
+        review_scores_per_week = results[0]
+        
+        dashboard_data = {
+            "main_dashboard_data": main_dashboard_data
+            , "review_scores_per_week_by_series": review_scores_per_week_by_series
+            , "review_scores_per_week": review_scores_per_week
+        }
     except Exception as e:
-        results = f"SQL Error: {e}"
+        dashboard_data = f"SQL Error: {e}"
         statusCode = 500
     
     return {
@@ -35,5 +55,5 @@ def lambda_handler(event, context):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
-        'body': json.dumps(results)
+        'body': json.dumps(dashboard_data)
     }
