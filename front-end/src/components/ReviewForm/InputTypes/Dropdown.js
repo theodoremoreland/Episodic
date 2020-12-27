@@ -19,7 +19,7 @@ export default function Dropdown({inputSettings, options}) {
     const nullReplacement = question !== "Series" ? "Have not watched corresponding episode(s)" : null;
 
     const handleChange = (value) => {
-        if (isNaN(value)) {
+        if (isNaN(value) && question !== "Series") {
             value = null;
         };
 
