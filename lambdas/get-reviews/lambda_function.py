@@ -24,13 +24,13 @@ def lambda_handler(event, context):
             SELECT
                 review::jsonb
             FROM public.reviews
-            WHERE dateentered IN (SELECT MAX(dateentered) FROM public.reviews GROUP BY enteredby_id, TO_DATE(review ->> 'Week Ending', 'YYYY-MM-DD'))
+            WHERE dateentered IN (SELECT MAX(dateentered) FROM public.reviews GROUP BY enteredby_id, series_id, TO_DATE(review ->> 'Week Ending', 'YYYY-MM-DD'))
             ;	
             """)
         results = cursor.fetchall()
         results = [result[0] for result in results]
     except Exception as e:
-        results = e
+        results = f"SQL ERROR: {e}"
         statusCode = 500
     
     return {
