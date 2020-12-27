@@ -1,4 +1,5 @@
 # Episodic
+An abridged version of the Weekly Absence Tracker
 
 ## Technologies Used
 * React.js
@@ -13,5 +14,5 @@
 * AWS RDS
 * AWS Amplify
 
-# Demonstration
+# Screenshots
 
