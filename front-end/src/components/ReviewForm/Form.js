@@ -101,7 +101,7 @@ export default function ReviewForm() {
             }
         };
 
-        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/questions`, requestOptions)
+        await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-review-questions`, requestOptions)
             .then(function (response) {
                 if (response.status !== 200) {
                     return Promise.reject(`${response.status} ${response.statusText}`);
@@ -247,9 +247,9 @@ export default function ReviewForm() {
                                 </label>
                                 { questions.filter(questionObj => questionObj.questionGroup === "Anime").map((questionObj) => renderQuestion(questionObj)) }
                                 <label className="groupHeader" variant="h5">
-                                    {"Hype Train"}
+                                    {"Expectations"}
                                 </label>
-                                { questions.filter(questionObj => questionObj.questionGroup === "Hype Train").map((questionObj) => renderQuestion(questionObj)) }
+                                { questions.filter(questionObj => questionObj.questionGroup === "Expectations").map((questionObj) => renderQuestion(questionObj)) }
                             </FormControl>
                             <Button id="submit-button" type="submit" variant="contained" color="primary">
                                 Submit
