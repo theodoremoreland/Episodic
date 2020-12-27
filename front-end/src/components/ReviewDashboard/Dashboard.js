@@ -116,7 +116,8 @@ function DashboardContainer() {
 
   useEffect(() => { 
     getDashboard();
-  }, [selectedSeries]);
+    // eslint-disable-next-line
+  }, [selectedSeries]); 
 
   return (
     <Container maxWidth={false}>
