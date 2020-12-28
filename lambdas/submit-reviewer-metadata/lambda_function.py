@@ -18,18 +18,26 @@ print("You are connected to - ", record, "\n")
 
 def lambda_handler(event, context):
     statusCode = 201
-    body = json.loads(event["body"])
+    body = event["body"]
+    body = body.replace("'", "''") # Single quotes get duplicated so they are escaped in postgres query.
+    body = json.loads(body)
     email = body["Email"]
+    results = ""
     
     print(json.dumps(body))
     
     try:
         cursor.execute('BEGIN TRANSACTION;')
-        cursor.execute(f"""SELECT "fnReviewerMetadataInsert"('{json.dumps(body)}'::json, '{email}');""")
+        results = cursor.execute(f"""
+            SELECT "fnReviewerMetadataInsert"('{json.dumps(body)}'::jsonb, '{email}');
+            """)
         cursor.execute('COMMIT;')
-        results = "Sucess"
+        results = "Success"
     except Exception as e:
+        cursor.execute('ROLLBACK;')
+        print(results)
         results = f"SQL ERROR: {e}"
+        print(results)
         statusCode = 500
     
     return {
