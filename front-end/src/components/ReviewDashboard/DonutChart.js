@@ -70,7 +70,7 @@ const DonutChart = ({ animeReviewsCount, mangaReviewsCount }) => {
 
   return (
     <Card className={clsx(classes.root)}>
-      <CardHeader className="cardTitle" title="Cumulative Reviews" />
+      <CardHeader className="cardTitle" title="Valid Reviews By Medium" />
       <Divider />
       <CardContent>
         <Box height={300} position="relative">

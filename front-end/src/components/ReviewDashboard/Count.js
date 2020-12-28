@@ -9,7 +9,7 @@ const Count = ({ count }) => {
         <Grid container justify="space-between" spacing={3}>
           <Grid item>
             <Typography className="cardTitle" gutterBottom variant="h6">
-              Total Reviews 
+              Total Reviews Submitted 
             </Typography>
             <Typography className="KPI" variant="h3">
               {count}

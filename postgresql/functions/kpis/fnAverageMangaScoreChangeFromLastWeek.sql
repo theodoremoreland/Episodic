@@ -20,9 +20,7 @@ BEGIN
           )
       FROM v_anime_vs_manga
       WHERE series_id = _series_id
-        AND EXTRACT(year FROM weekEnding) = EXTRACT(year FROM NOW())
-        AND EXTRACT(week FROM weekEnding) = EXTRACT(week FROM NOW()) 
-
+        AND weekEnding > (NOW() - INTERVAL '7 days') 
     );
 
     _average_last_week = (
@@ -32,9 +30,8 @@ BEGIN
           )
       FROM v_anime_vs_manga
       WHERE series_id = _series_id
-        AND EXTRACT(year FROM weekEnding) = EXTRACT(year FROM NOW())
-        AND EXTRACT(week FROM weekEnding) = EXTRACT(week FROM NOW()) - 1
-
+        AND weekEnding < (NOW() - INTERVAL '7 days')
+        AND weekEnding > (NOW() - INTERVAL '14 days')
     );
 
   RETURN TRUNC(_average_this_week - _average_last_week, 2);

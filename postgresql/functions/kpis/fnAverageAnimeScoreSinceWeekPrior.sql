@@ -20,9 +20,7 @@ BEGIN
           )
       FROM v_anime_vs_manga
       WHERE series_id = _series_id
-        AND EXTRACT(year FROM weekEnding) = EXTRACT(year FROM NOW())
-        AND EXTRACT(week FROM weekEnding) = EXTRACT(week FROM NOW()) 
-
+        AND weekEnding > (NOW() - INTERVAL '7 days')
     );
 
     _view2_average_this_week = (
@@ -30,8 +28,7 @@ BEGIN
         AVG(value::int)
       FROM v_anime
       WHERE series_id = _series_id
-        AND EXTRACT(year FROM weekEnding) = EXTRACT(year FROM NOW())
-        AND EXTRACT(week FROM weekEnding) = EXTRACT(week FROM NOW()) 
+        AND weekEnding > (NOW() - INTERVAL '7 days')
       );
 
   RETURN TRUNC((_view1_average_this_week + _view1_average_this_week) / 2, 2);
