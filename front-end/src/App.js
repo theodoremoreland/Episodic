@@ -20,7 +20,7 @@ import './App.css';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#a6a6ff',
+      main: '#4A4883',
     },
     secondary: {
       main: '#4A4883'

@@ -54,6 +54,10 @@
   color: #f8f8f8 !important;
 }
 
+.registrationCheckbox .MuiSvgIcon-root {
+  fill: #a6a6ff !important; 
+}
+
 
 /* __________________ RADIO ____________________________ */
 
