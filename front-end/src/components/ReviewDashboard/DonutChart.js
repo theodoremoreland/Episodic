@@ -21,7 +21,7 @@ const DonutChart = ({ animeReviewsCount, mangaReviewsCount }) => {
         data: [animeReviewsCount, mangaReviewsCount],
         backgroundColor: [
           '#4A4883',
-          '#BC2628'
+          '#d2ccc4'
         ],
         borderWidth: 8,
         borderColor: colors.common.white,
@@ -64,7 +64,7 @@ const DonutChart = ({ animeReviewsCount, mangaReviewsCount }) => {
       title: 'Manga Reviews',
       value: mangaReviewsCount,
       icon: PeopleAltIcon,
-      color: '#BC2628'
+      color: '#d2ccc4'
     }
   ];
 

@@ -56,7 +56,7 @@ const GroupedBarChart = ({ series, reviewScoresPerWeek, reviewScoresPerWeekBySer
         ...barOptions
       },
       {
-        backgroundColor: '#BC2628',
+        backgroundColor: '#d2ccc4',
         data: totalData.slice(0, 6).reverse(),
         label: 'All series',
         ...barOptions
