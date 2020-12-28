@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION public."fnReviewInsert"(
-	_review json,
+	_review jsonb,
 	_email text,
   _series text)
     RETURNS void
