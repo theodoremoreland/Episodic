@@ -163,14 +163,14 @@ function DashboardContainer() {
             : <Dropdown series={series} selectedSeries={selectedSeries} setSelectedSeries={setSelectedSeries} />
           }
         </Grid>
-        <Grid item lg={8} md={12} xl={9} xs={12}>
+        <Grid item xs={12} md={8}>
           {
             reviewScoresPerWeek === undefined || reviewScoresPerWeekBySeries === undefined
             ? <Skeleton id="input" variant="rect" height={600}/>
             : <GroupedBarChart series={selectedSeries} reviewScoresPerWeek={reviewScoresPerWeek} reviewScoresPerWeekBySeries={reviewScoresPerWeekBySeries} />
           }
         </Grid>
-        <Grid itemmd={6} xl={3} xs={12}>
+        <Grid item xs={12} md={4}>
           {
             animeReviewsCount === undefined || mangaReviewsCount === undefined
             ? <Skeleton id="input" variant="rect" height={600}/> 
