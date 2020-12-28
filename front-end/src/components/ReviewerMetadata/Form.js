@@ -219,7 +219,8 @@ export default function ReviewerMetadataForm() {
                         Reviewer Metadata
                     </Typography>
                     <Typography className="form-description" variant="h6">
-                        Complete the form below to establish or update your reviewer metadata.
+                        Complete the form below to establish or update your reviewer profile.
+                        This data is used to find correlations between reviews and reviewers.
                     </Typography>
                 </div>
                 <form autoComplete="off" id="registrationForm" onSubmit={(event) => { event.preventDefault(); setConfirmationPromptIsOpen(true); }}>

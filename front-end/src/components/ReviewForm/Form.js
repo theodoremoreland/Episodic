@@ -223,7 +223,8 @@ export default function ReviewForm() {
                         Review Form
                     </Typography>
                     <p className="form-description">
-                        Complete the form below to submit a review.
+                        Complete the form below to submit a review. For choosing a date, select the Saturday that occurs on the same week the Anime aired.
+                        If the episode aired on a Tuesday, choose the following Saturday etc.
                     </p>
                 </div>
                 <form id="reviewForm" autoComplete="off" onSubmit={(event) => { event.preventDefault(); setConfirmationPromptIsOpen(true); }}>
