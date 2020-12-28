@@ -47,6 +47,9 @@ const KPI = ({ title, average, changeFromLastWeek, sinceWeekPrior  }) => {
           </Grid>
         </Grid>
         <Box mt={2} display="flex" alignItems="center">
+        <Typography className="cardCaption" variant="caption">
+            This Week's Rating:&nbsp;
+        </Typography>
         {
               sinceWeekPrior <= 7
                 ? <>
@@ -60,9 +63,6 @@ const KPI = ({ title, average, changeFromLastWeek, sinceWeekPrior  }) => {
                     </Typography>
                   </>
             }
-          <Typography className="cardCaption" variant="caption">
-            This Week's Rating
-          </Typography>
         </Box>
         {/* <Box mt={2} display="flex" alignItems="center">
         {
