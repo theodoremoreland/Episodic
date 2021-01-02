@@ -153,7 +153,7 @@ function DashboardContainer() {
           {
             seriesReviewCount === undefined
             ? <Skeleton id="input" variant="rect" height={200}/>
-            : <Count count = {seriesReviewCount} />
+            : <Count title={"Review Forms Submitted"} count = {seriesReviewCount} />
           }
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
