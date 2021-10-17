@@ -110,7 +110,6 @@ export default function ReviewForm() {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data)
                 setQuestions(data);
                 initializeAnswers(data, userEmail, series);
             })

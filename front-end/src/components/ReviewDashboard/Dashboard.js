@@ -105,7 +105,7 @@ function DashboardContainer() {
       })
       .catch(error => {
           const text = `Error receiving dashboard data. ${error.toString()}.`;
-          console.log(text);
+          console.error(text);
       });
   };
 
