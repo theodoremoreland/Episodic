@@ -1,6 +1,5 @@
 /* ___________________ FONTS ____________________________ */
 
-
 @font-face {
     font-family: header;
     src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf');
@@ -16,13 +15,33 @@
     src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf');
 }
 
-
 /* ___________________ CONTENT ____________________________ */
 
-html, body {
+html, body, #root {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #EAD5E1;
+}
+
+html {
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cd987f75-c85b-42a8-bde9-95fbb41dc4a2/db5cpdt-93a4cea3-e41f-4815-b3a8-7642070f54d0.jpg/v1/fill/w_1600,h_900,q_75,strp/ultimate_manga_wallpaper_by_omega_sly_db5cpdt-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvY2Q5ODdmNzUtYzg1Yi00MmE4LWJkZTktOTVmYmI0MWRjNGEyXC9kYjVjcGR0LTkzYTRjZWEzLWU0MWYtNDgxNS1iM2E4LTc2NDIwNzBmNTRkMC5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.6aZ9iXYitS3o8xiEVRdZGfIbsym0SKBEMrqcLaLdgV8");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body {
+    opacity: 0.975;
+}
+
+#overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #000000d3;
+    z-index: -1;
 }
 
 .content {
@@ -53,7 +72,6 @@ button {
 
 /* ___________________ FORM STYLES ____________________________ */
 
-
 .form-section {
     background-color: #4A4883;
     border-radius: 6px;
@@ -62,11 +80,11 @@ button {
     -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
     -moz-box-shadow:    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  /* Firefox 3.5 - 3.6 */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-  }
+}
 
-  .formHeader {
-      margin-bottom: 0px;
-  }
+.formHeader {
+    margin-bottom: 0px;
+}
   
 .form-description {
     font-family: accent-light !important;
@@ -86,7 +104,6 @@ div.MuiFormControl-root {
     color: #ffffff !important;
 }
 
-
 /* Hides asterisks */
 .MuiFormLabel-asterisk.MuiInputLabel-asterisk {
     display: none;
@@ -102,7 +119,6 @@ div.MuiFormControl-root {
     border-top-left-radius: 0px !important;
     border-top-right-radius: 0px !important;
 }
-
 
 /* ___________________ SUBMIT BUTTON ____________________________ */
 

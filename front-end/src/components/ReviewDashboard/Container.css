@@ -13,8 +13,8 @@
    margin: 0px 0px -15px 0px;
 }
 
-#dashboardTitle, #dashboardSubTitle {
-   color: #3c3c3d;
+#dashboardTitle, #dashboardSubTitle, #dropdownTitle {
+   color: #7a77e9;
 }
 
 #dashboardTitle {
@@ -33,6 +33,10 @@
    font-weight: 700;
    float: right;
    margin-right: 15px;
+}
+
+#dashboard div.MuiFormControl-root {
+    background-color: aliceblue;
 }
 
 .dashboardDropdown .MuiInputBase-input, .dashboardDropdown .MuiFormLabel-root {

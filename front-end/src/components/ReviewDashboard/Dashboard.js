@@ -120,7 +120,7 @@ function DashboardContainer() {
   }, [selectedSeries]); 
 
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth={false} id="dashboard">
       <Grid container spacing={3}>
         <Grid item id="dashboardTitleContainer" xs={12}>
           { latestSeriesReviewDate === undefined

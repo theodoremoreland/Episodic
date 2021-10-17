@@ -104,7 +104,6 @@ function ResponsiveDrawer(props) {
             {drawer}
           </Drawer>
         </Hidden>
-        
           <Drawer
             className="permanentDrawer"
             variant="permanent"
@@ -112,7 +111,6 @@ function ResponsiveDrawer(props) {
           >
             {drawer}
           </Drawer>
-        
       </nav>
     </div>
   );

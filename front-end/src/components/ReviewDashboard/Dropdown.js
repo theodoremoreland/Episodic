@@ -7,13 +7,11 @@ import { Typography } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-
 export default function Dropdown({series, selectedSeries, setSelectedSeries}) {
-
     return (
         <>
             <Tooltip className="hoverText" title={""} width={"600px"} arrow>
-                <Typography style={{"marginTop": "5px"}} className="dashboardSubtitle" variant="h5" color="primary">
+                <Typography style={{"marginTop": "5px"}} id="dropdownTitle" variant="h5">
                     Change Series
                 </Typography>
             </Tooltip>

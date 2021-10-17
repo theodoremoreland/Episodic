@@ -48,7 +48,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <HashRouter>     
-        <Sidebar />      
+        <Sidebar />
+        <div id="overlay"></div>      
         {/* Necessary for content to be below app bar */}
         <div style={{minHeight : 100, width : '100%'}} />
         <Grid className="content" container >
