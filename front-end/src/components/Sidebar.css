@@ -17,6 +17,12 @@
     visibility: hidden;
 }
 
+a.nav-button > div {
+    background-image: url("../../src/images/grunge-halftone-texture-overlay-3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
 /* __________________ TEXT ____________________________ */
 
 .sidebar-container .MuiTypography-root {
