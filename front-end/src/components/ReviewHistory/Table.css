@@ -5,6 +5,11 @@
     margin-bottom: 400px !important;
 }
 
+/* Necessary to make horizontal scroll visible when simulating large screen in dev tools for some reason */
+.MuiDataGrid-root .MuiDataGrid-dataContainer {
+    background-color: #BC2628;
+}
+
 
 /* TABLE HEADER */
 #reviewHistoryTableContainer .MuiDataGrid-colCell {

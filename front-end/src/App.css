@@ -4,7 +4,7 @@
     font-family: header;
     src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf');
 }
-  
+
 @font-face {
     font-family: accent;
     src: url('./fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf');
@@ -46,7 +46,6 @@ body {
 
 .content {
     padding-left: 240px !important;
-    flex-grow: 1;
 }
 
 .pageTitle {
@@ -189,7 +188,6 @@ button#submit-button {
 }
   
 @media screen and (max-width: 960px) {
-
     .content {
         padding: 30px !important;
     }
@@ -209,7 +207,6 @@ button#submit-button {
   
   
 @media screen and (max-width: 600px) {
-
     .form-section {
         width: 100%;
     }
