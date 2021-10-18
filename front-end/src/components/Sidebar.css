@@ -4,8 +4,12 @@
 
 .MuiPaper-root.MuiDrawer-paper {
     color: white;
-    background-color: #4A4883;
+    background-color: #403d82d7;
     width: 240px !important;
+    background-image: url("../../src/images/grunge-halftone-texture-overlay-3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: soft-light;
 }
 
 .appBar {
@@ -17,11 +21,9 @@
     visibility: hidden;
 }
 
-a.nav-button > div {
-    background-image: url("../../src/images/grunge-halftone-texture-overlay-3.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode: soft-light;
+a.nav-button > div:hover, a.nav-button > div:active {
+    background-color: #4A4883;
+    mix-blend-mode: hard-light;
 }
 /* __________________ TEXT ____________________________ */
 
@@ -71,4 +73,7 @@ a.nav-button:link, a.nav-button:active, a.nav-button:visited, a.nav-button:hover
         display: none;
     }
 
+    .MuiPaper-root.MuiDrawer-paper {
+        background-color: #5650ff3a;
+    }
 }
