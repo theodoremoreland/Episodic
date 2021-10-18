@@ -20,6 +20,9 @@ Episodic currently has four views / web pages: "Trends", "Review Form", "Review 
 * AWS RDS
 * AWS Amplify
 
+### Future improvements
+Known issues and future improvements can be found here: https://github.com/theodoremoreland/Episodic/projects/1
+
 # Screenshots
 
 # Landing page / dashboard
