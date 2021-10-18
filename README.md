@@ -29,7 +29,7 @@ Episodic currently has four views / web pages: "Trends", "Review Form", "Review 
 Users can view a dashboard for each series.
 <img src="presentation/2.PNG" width="900">
 
-# After selecting series One Piece
+# After selecting series My Hero Academia
 <img src="presentation/3.PNG" width="900">
 
 # Review Form page #1
@@ -77,8 +77,9 @@ User can view and download all review submissions here.
 # Reviewer Metadata page #3
 <img src="presentation/17.PNG" width="900">
 
-# After successful submission
+# After successful submission (old design)
 <img src="presentation/18.PNG" width="900">
 
 # Data displayed on Reviewer Metadata page corresponds with database
+This gif was captured with the application's old design, but the functionality remains the same.
 <img src="presentation/1.gif" width="900">
