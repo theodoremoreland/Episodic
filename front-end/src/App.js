@@ -16,7 +16,6 @@ import ReviewerMetadataForm from './components/ReviewerMetadata/Form';
 // Styles
 import './App.css';
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {

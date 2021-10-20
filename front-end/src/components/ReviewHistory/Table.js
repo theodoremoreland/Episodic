@@ -39,10 +39,10 @@ export default function ReviewHistoryTable() {
   const [alertMessageObj, setAlertMessageObj] = useState({severity: "", text: "", "duration": 0});
   const [alertIsActive, setAlertIsActive] = useState(false);
 
-
   const transformRowData = (entries) => {
     const isDate = /^\d{4}-\d{2}-\d{2}.*$/;
     const isNumber = /^\d+$/;
+
     try {
       for (const entry of entries) {
         for (let [question, answer] of Object.entries(entry)) {
@@ -83,10 +83,11 @@ export default function ReviewHistoryTable() {
       });
       setAlertIsActive(true);
     }
+
     const transformedRows = entries.map((entry, index) => ({ "id": index + 1, ...entry})); // Key: "id" is needed for DataGrid to function properly
+
     return transformedRows;
   };
-
 
   const transformColumnData = (transformedRows) => {
     const transformedColumns = [];
@@ -107,7 +108,6 @@ export default function ReviewHistoryTable() {
     return transformedColumns;
   };
 
-
   const getEntries = async () => {
     const requestOptions = {
         headers: {
@@ -119,7 +119,7 @@ export default function ReviewHistoryTable() {
       .then(function (response) {
         if (response.status !== 200) {
             return Promise.reject(`${response.status} ${response.statusText}`);
-        };
+        }
 
         return response.json();
       })
@@ -127,16 +127,18 @@ export default function ReviewHistoryTable() {
           const entries = response; 
 
           if (entries.length === 0) {
-            const text = "No data"
+            const text = "No data";
+
             setColumns([]);
             setRows([]);
-            setAlertMessageObj({severity: "warning" , text, "duration": 6_000})
+            setAlertMessageObj({severity: "warning" , text, "duration": 6_000});
             setAlertIsActive(true);
           }
           else {
             const transformedRows = transformRowData(entries);
-            setRows(transformedRows);
             const transformedColumns = transformColumnData(transformedRows);
+
+            setRows(transformedRows);
             setColumns(transformedColumns);
           }
       })
@@ -146,15 +148,15 @@ export default function ReviewHistoryTable() {
       });
   };
 
-
   const addSeriesAndUserOptionsForFilter = () => {
     if (rows === undefined) { return undefined; }
+
     const seriesInEntries = rows.map((row) => row["Series"]);
     const usersInEntries = rows.map((row) => row["Email"]);
+
     setSeriesFilterOptions(new Set(seriesInEntries));
     setUserFilterOptions(new Set(usersInEntries));
   };
-
 
   const filterRows = () => {
     let filteredRows = rows;
@@ -167,10 +169,9 @@ export default function ReviewHistoryTable() {
       ? filteredRows.filter((row) => row["Email"] === userFilterValue || (row["Email"] === null && userFilterValue === "null"))
       : filteredRows;
 
-    return filteredRows
+    return filteredRows;
   };
 
-  
   const createCSV = (filteredRows) => {
     let csvString = "data:text/csv;charset=utf-8,"; // Trailing space is necessary.
 
@@ -192,11 +193,10 @@ export default function ReviewHistoryTable() {
         rowData.push(row[csvColumn]); 
       };
       csvString += rowData.join(",") + "\n";
-    };
+    }
 
     return encodeURI(csvString);
   };
-
 
   // Fetch entries on load
   useEffect(() => {
@@ -208,7 +208,6 @@ export default function ReviewHistoryTable() {
   useEffect(() => {
     addSeriesAndUserOptionsForFilter();
   }, [rows]); // eslint-disable-line react-hooks/exhaustive-deps
-
 
   return (
     <>
@@ -262,9 +261,9 @@ export default function ReviewHistoryTable() {
 
             {/* Table */}
             <DataGrid id="reviewHistoryTable" rows={filterRows()} columns={columns} autoHeight pageSize={15} rowsPerPageOptions={[15, 30, 50]}/>
-            </> }
+            </>
+        }
       </section>
-
       <Alert 
         alertMessageObj={alertMessageObj}
         alertIsActive={alertIsActive}

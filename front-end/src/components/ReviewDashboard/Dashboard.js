@@ -14,7 +14,7 @@ import DonutChart from './DonutChart';
 import Dropdown from './Dropdown';
 
 // Styles
-import './Container.css';
+import './Dashboard.css';
 
 function DashboardContainer() {
   const [series, setSeries] = useState(undefined);
@@ -40,14 +40,13 @@ function DashboardContainer() {
   const [alertIsActive, setAlertIsActive] = useState(false);
   const [alertMessageObj, setAlertMessageObj] = useState({text: "", severity: "", duration: 0});
 
-
   const getSeries = async () => {
     const requestOptions = {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
-    };
+    }
 
     await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/series`, requestOptions)
         .then(function (response) {
@@ -76,13 +75,13 @@ function DashboardContainer() {
         headers: {
           'Content-Type': 'application/json'
         }
-    };
+    }
 
     await fetch(`${process.env.REACT_APP_EPISODIC_API_ENDPOINT}/get-dashboard-json?series=${selectedSeries}`, requestOptions)
       .then(function (response) {
         if (response.status !== 200) {
             return Promise.reject(`${response.status} ${response.statusText}`);
-        };
+        }
 
         return response.json();
       })
@@ -178,12 +177,11 @@ function DashboardContainer() {
           }
         </Grid>
       </Grid>
-
       <Alert 
-                alertMessageObj={alertMessageObj}
-                alertIsActive={alertIsActive}
-                setAlertIsActive={setAlertIsActive}
-            />
+            alertMessageObj={alertMessageObj}
+            alertIsActive={alertIsActive}
+            setAlertIsActive={setAlertIsActive}
+        />
     </Container>
   );
 };

@@ -33,11 +33,12 @@ export default function ReviewerMetadataForm() {
     const [alertIsActive, setAlertIsActive] = useState(false);
     const [alertMessageObj, setAlertMessageObj] = useState({"severity": "", "text": "", "duration": 0});
 
-
+    /**
+     * Creates necessary data structures for answer data.
+     Adds active metadata to answer data where applicable.
+     * @returns {void}
+     */
     const initializeAnswers = () => {
-        // Creates necessary data structures for answer data.
-        // Adds active metadata to answer data where applicable.
-
         const answerPlaceholders = {};
 
         for (let question of questions) {
@@ -60,9 +61,9 @@ export default function ReviewerMetadataForm() {
                 answerPlaceholders[label] = null;
             }
         }
+
         setAnswers(answerPlaceholders);
     };
-
 
     const getMetadata = async () => {
         const requestOptions = {
@@ -91,11 +92,9 @@ export default function ReviewerMetadataForm() {
             });
     };
 
-
     const fieldShouldBeDisabled = (label) => {
         return label === "Reviewer" || label === "Email";
     };
-
 
     const assignDefaultValue = (questionObj) => {
         const { label, type } = questionObj;
@@ -123,7 +122,6 @@ export default function ReviewerMetadataForm() {
         }
         return {defaultValue, defaultValue2};
     };
-
 
     const renderQuestion = (questionObj) => {
         const { 
@@ -163,7 +161,6 @@ export default function ReviewerMetadataForm() {
         }
     };
 
-
     const submitMetadata = async () => {
         const newSubmission = JSON.stringify({...answers});
 
@@ -198,7 +195,6 @@ export default function ReviewerMetadataForm() {
             });
     };
 
-
     // Fetch previously submitted  data on load.
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to top of page.
@@ -209,7 +205,6 @@ export default function ReviewerMetadataForm() {
     useEffect(() => {
         initializeAnswers();
     }, [activeMetadata]); // eslint-disable-line react-hooks/exhaustive-deps
-
 
     return (
         <>
@@ -241,14 +236,12 @@ export default function ReviewerMetadataForm() {
                     }
                 </form>  
             </section>
-
             <ConfirmationPrompt 
                 answers={answers}
                 confirmationPromptIsOpen={confirmationPromptIsOpen}
                 setConfirmationPromptIsOpen={setConfirmationPromptIsOpen}
                 submit={submitMetadata}
-            />
-            
+            /> 
             <Alert 
                 alertMessageObj={alertMessageObj}
                 alertIsActive={alertIsActive}

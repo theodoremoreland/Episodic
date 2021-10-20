@@ -23,7 +23,6 @@ import Dropdown from './InputTypes/Dropdown';
 // Custom styles
 import './Form.css';
 
-
 export default function ReviewForm() {
     // USER DATA
     const userEmail = "dev5@demo.dev";
@@ -39,7 +38,6 @@ export default function ReviewForm() {
     const [alertIsActive, setAlertIsActive] = useState(false);
     const [alertMessageObj, setAlertMessageObj] = useState({text: "", severity: "", duration: 0});
 
-    
     const initializeAnswers = (questions, userEmail) => {
         const placeholderAnswers = {};
     
@@ -61,7 +59,6 @@ export default function ReviewForm() {
         setAnswers({...answers, ...placeholderAnswers});
         setAnswersOnReset({...answers, ...placeholderAnswers}); // Image of form data before user updates.
     };
-
 
     const getSeries = async () => {
         const requestOptions = {
@@ -93,7 +90,6 @@ export default function ReviewForm() {
             });
     };
 
-
     const getQuestions = async () => {
         const requestOptions = {
             headers: {
@@ -122,7 +118,6 @@ export default function ReviewForm() {
                 setAlertIsActive(true);
             });
     };
-
 
     const renderQuestion = (questionObj) => {
         const email = userEmail;
@@ -162,7 +157,6 @@ export default function ReviewForm() {
         }
     };
 
-
     const submitReviews = async () => {
         const requestOptions = {
             method: 'POST',
@@ -199,7 +193,6 @@ export default function ReviewForm() {
             });
     };
 
-
     // Fetch questions on load
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to top of page.
@@ -213,7 +206,6 @@ export default function ReviewForm() {
         }
     }, [series]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    
     return (
         <>
             <section className="form-section">
@@ -258,14 +250,12 @@ export default function ReviewForm() {
                     }
                 </form>  
             </section>
-
             <ConfirmationPrompt 
                 answers={answers}
                 confirmationPromptIsOpen={confirmationPromptIsOpen}
                 setConfirmationPromptIsOpen={setConfirmationPromptIsOpen}
                 submit={submitReviews}
             />
-            
             <Alert 
                 alertMessageObj={alertMessageObj}
                 alertIsActive={alertIsActive}
