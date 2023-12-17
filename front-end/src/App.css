@@ -32,7 +32,7 @@ body,
   top: 0;
   left: 0;
   width: 100vw;
-  height: 120vh;
+  height: 135vh;
   overflow: hidden;
   background-image: url("../src/images/ultimate_manga_wallpaper_by_omega_sly_db5cpdt-fullview.jpg");
   background-position: top;
@@ -46,7 +46,7 @@ body {
 
 #overlay {
   width: 100vw;
-  height: 120vh;
+  height: 135vh;
   overflow: hidden;
   position: fixed;
   background-color: #000000f3;
