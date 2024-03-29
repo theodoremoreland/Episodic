@@ -45,27 +45,31 @@ Users can submit reviews for an episode here.
 ### Review Form page #3
 <img src="presentation/6.PNG" width="900">
 
-### Prompt for confirming review before submission
+### Confirmation prompt
 <img src="presentation/7.PNG" width="900">
 
 ### After successful submission
+
 The form (and React state) reset upon submission thus allowing successive submissions without reloading.
+
 <img src="presentation/8.PNG" width="900">
 
 ### Review History page
+
 User can view and download all review submissions here.
+
 <img src="presentation/9.PNG" width="900">
 
-### The code features an algorithm that separates questions into appropriate distinctions
+### An algorithm separates questions into appropriate distinctions
 <img src="presentation/10.PNG" width="900">
 
 ### Reviews can be filtered by series and reviewer
 <img src="presentation/11.PNG" width="900">
 
-### After filtering for the review submitted earlier
+### After filtering for review
 <img src="presentation/12.PNG" width="900">
 
-### Firefox prompting for download after clicking EXPORT button
+### Download prompt after clicking EXPORT button
 <img src="presentation/13.PNG" width="900">
 
 ### Downloads correspond to filtered data
@@ -84,5 +88,7 @@ User can view and download all review submissions here.
 <img src="presentation/18.PNG" width="900">
 
 ### Data displayed on Reviewer Metadata page corresponds with database
+
 This gif was captured with the application's old design, but the functionality remains the same.
+
 <img src="presentation/1.gif" width="900">
