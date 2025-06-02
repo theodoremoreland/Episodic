@@ -7,7 +7,8 @@ connection = pg8000.connect(user=user,
                             password=password,
                             host=host,
                             port=int(port),
-                            database="episodic")
+                            database="episodic",
+                            ssl_context=True)
 
 cursor = connection.cursor()
 
