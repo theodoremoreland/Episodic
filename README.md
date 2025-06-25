@@ -6,8 +6,6 @@ Episodic lets users share reviews for episodic Anime releases. The idea being th
 
 Episodic currently has four views / web pages: "Trends", "Review Form", "Review History", and "Reviewer Metadata". Screenshots and descriptions for each view can be found in the Screenshots section below.
 
-[View the deployed application](https://main.d28h6t4ey37fqg.amplifyapp.com/#/trends)
-
 ## Technologies Used
 * React.js
 * JavaScript (ES6)
