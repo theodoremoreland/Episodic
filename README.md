@@ -2,10 +2,15 @@
 
 ## Table of contents
 
-- Technologies used
-- Screenshots
-  - Desktop
-  - Mobile
+- [Overview](#overview)
+- [Technologies used](#table-of-contents)
+- [Screenshots](#screenshots)
+  - [Desktop](#desktop)
+  - [Mobile](#mobile)
+
+## Overview
+
+This web application was originally written using a Python serverless API via AWS Lambda and AWS API Gateway but has since been converted to a full-stack NextJS based application. This conversion was done to practice NextJS.
 
 ## Technologies used
 
@@ -13,15 +18,11 @@
 - TypeScript
 - JavaScript (ES6)
 - NextJS
-- Python
 - PostgreSQL
 - PL/pgSQL
 - HTML
 - CSS
-- AWS Lambda
-- AWS API Gateway
 - AWS RDS
-- AWS Amplify
 
 ## Screenshots
 
