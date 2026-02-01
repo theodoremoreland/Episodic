@@ -9,5 +9,5 @@ CREATE TABLE reviews(
         REFERENCES series(series_id),
    CONSTRAINT fk_reviewer
     FOREIGN KEY(enteredby_id)
-        REFERENCES reviewers(reviewer_id)        
+        REFERENCES reviewers(reviewer_id)
 );

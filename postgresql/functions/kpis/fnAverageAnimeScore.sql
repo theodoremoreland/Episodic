@@ -23,6 +23,6 @@ BEGIN
   _view2_average = (SELECT AVG(value::int) FROM v_anime WHERE series_id = _series_id);
 
   RETURN TRUNC( (_view1_average + _view2_average) / 2, 2 );
-  
+
 END;
 $BODY$;

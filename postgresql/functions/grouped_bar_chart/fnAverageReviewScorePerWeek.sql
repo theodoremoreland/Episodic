@@ -6,7 +6,7 @@ CREATE OR REPLACE FUNCTION "fnAverageReviewScorePerWeek"()
     VOLATILE
 AS $BODY$
 BEGIN
-  
+
   RETURN QUERY (
     WITH per_week_per_view AS (
       WITH v_anime_vs_manga_per_week AS (

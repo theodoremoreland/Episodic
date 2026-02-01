@@ -14,7 +14,7 @@ INSERT INTO review_questions(
 		, ''
 		, true
 		, true
-		); 
+		);
 
 INSERT INTO review_questions(
 	question
@@ -30,7 +30,7 @@ INSERT INTO review_questions(
 		, ''
 		, true
 		, true
-		); 
+		);
 
 INSERT INTO review_questions(
 	question

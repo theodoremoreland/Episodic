@@ -16,7 +16,7 @@ CREATE TABLE reviewers (
    username  VARCHAR(30),
    firstname  VARCHAR(50),
    lastname  VARCHAR(50),
-   emailaddress  VARCHAR(100)     
+   emailaddress  VARCHAR(100)
 );
 
 
@@ -39,7 +39,7 @@ CREATE TABLE reviews(
         REFERENCES series(series_id),
    CONSTRAINT fk_reviewer
     FOREIGN KEY(enteredby_id)
-        REFERENCES reviewers(reviewer_id)        
+        REFERENCES reviewers(reviewer_id)
 );
 
 

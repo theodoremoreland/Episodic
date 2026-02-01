@@ -10,7 +10,7 @@ DECLARE _series_id INTEGER;
 
 BEGIN
   _series_id = (SELECT series_id FROM series WHERE name = _series);
-  
+
   RETURN QUERY (
     WITH per_week_per_view AS (
       WITH v_anime_vs_manga_per_week AS (

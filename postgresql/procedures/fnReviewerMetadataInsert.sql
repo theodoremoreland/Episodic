@@ -16,7 +16,7 @@ BEGIN
   SET active = FALSE
   WHERE active = TRUE
     AND reviewer_metadata.reviewer_id = _reviewer_id;
-    
+
   INSERT INTO reviewer_metadata(reviewer_id, metadata, active)
   VALUES(_reviewer_id,  _metadata, TRUE);
 END;

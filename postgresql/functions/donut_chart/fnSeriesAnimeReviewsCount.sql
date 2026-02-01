@@ -22,6 +22,6 @@ BEGIN
 
 
   RETURN (_review_count );
-  
+
 END;
 $BODY$;

@@ -45,7 +45,7 @@ BEGIN
     );
 
     _view2_average_last_week = (
-      SELECT 
+      SELECT
         AVG(value::int)
       FROM v_anime
       WHERE series_id = _series_id

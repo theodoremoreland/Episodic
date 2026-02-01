@@ -6,4 +6,3 @@ CREATE or REPLACE VIEW v_expectations AS
   	key IN (SELECT question FROM review_questions WHERE questiongroup = 'Expectations')
     AND dateentered IN (SELECT MAX(dateentered) FROM reviews GROUP BY enteredby_id, series_id, TO_DATE(review ->> 'Week Ending', 'YYYY-MM-DD'))
   ORDER BY enteredby_id, series_id, weekEnding DESC, key;
-  

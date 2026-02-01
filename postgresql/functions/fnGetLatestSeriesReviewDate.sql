@@ -12,7 +12,7 @@ BEGIN
   _series_id = (select series_id from series where name = _series);
 
   RETURN (
-    SELECT 
+    SELECT
       review ->> 'Week Ending' AS "Week Ending"
     FROM reviews
     WHERE series_id = _series_id

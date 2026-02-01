@@ -3,5 +3,5 @@ CREATE TABLE reviewers (
    username  VARCHAR(30),
    firstname  VARCHAR(50),
    lastname  VARCHAR(50),
-   emailaddress  VARCHAR(100)     
+   emailaddress  VARCHAR(100)
 );

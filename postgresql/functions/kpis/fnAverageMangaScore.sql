@@ -21,6 +21,6 @@ BEGIN
   );
 
   RETURN TRUNC(_view1_average, 2 );
-  
+
 END;
 $BODY$;
