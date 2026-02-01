@@ -6,7 +6,7 @@ CREATE OR REPLACE FUNCTION public."fnReviewInsert"(
     LANGUAGE 'plpgsql'
 
     COST 100
-    VOLATILE 
+    VOLATILE
 AS $BODY$
 declare _series_id integer;
 declare _enteredby_id integer;
