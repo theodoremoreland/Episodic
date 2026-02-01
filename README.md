@@ -24,6 +24,7 @@ This web application was originally written using a Python serverless API via AW
 - Each REST API function corresponds to an HTTP method. For example a function named GET handles GET requests. If desiring a function that handles multiple HTTP methods, abstract a separate function then reuse across GET, POST, PUT, etc. methods in the route.ts file.
 - Access the api route via path matching a pattern like api/trends (i.e. same as page URLs but with /api prepended).
 - Next version 16.1.4 has serious security issues so I needed to update to version 16.1.6.
+- The .next folder contains the build files and should be gitignored, but keep in mind that the NextJS default .gitgnore assumes a specific relative placement of the folder and might not actually ignore the folder if located elsewhere.
 
 ## Technologies used
 
