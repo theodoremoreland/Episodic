@@ -1,0 +1,211 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* App Bar */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #4a4883;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1200;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 16px;
+  gap: 16px;
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-title {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.overlay {
+  display: block;
+}
+
+/* Drawer Container */
+.drawer-container {
+  display: flex;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  height: calc(100vh - 64px);
+  z-index: 1100;
+}
+
+/* Drawer */
+.drawer {
+  background-color: #26202e;
+  color: white;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawer-mobile {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 256px;
+  height: calc(100vh - 64px);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1099;
+}
+
+.drawer-mobile.open {
+  transform: translateX(0);
+}
+
+.drawer-desktop {
+  display: none;
+  width: 256px;
+  position: relative;
+  top: 0;
+}
+
+.drawer-content {
+  padding: 16px 0;
+}
+
+.drawer-title {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 16px;
+  margin: 0 0 16px 0;
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 8px 0 16px 0;
+}
+
+/* Navigation */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+  background-color: #6285d9;
+  border-left: 4px solid #6285d9;
+  padding-left: 12px;
+}
+
+.nav-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+}
+
+.nav-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 960px) {
+  /* Mobile: Hide permanent drawer, show mobile menu button */
+  .drawer-desktop {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .drawer-mobile {
+    display: block;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  .drawer-mobile.open ~ .overlay {
+    display: block;
+  }
+}
+
+@media (min-width: 961px) {
+  /* Desktop: Show permanent drawer, hide mobile menu */
+  .drawer-desktop {
+    display: block;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  .drawer-mobile {
+    display: none;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  /* Add left margin to content when drawer is visible */
+  .sidebar-container + * {
+    margin-left: 256px;
+  }
+}
