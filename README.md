@@ -42,6 +42,7 @@ This web application allows school administrators to report and track illness re
     - Stomach Flu
     - Pink Eye
     - Flu-like Symptoms
+    - Other
 - Dashboard for viewing data by school only if affiliated (to protect privacy)
   - Dashboard aggregates all schools regardless of affiliation, but available aggregates only available for affiliates
   - Filters/Aggregates by state, city for both dashboard views
