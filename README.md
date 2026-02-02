@@ -14,13 +14,38 @@
 This web application allows school administrators to report and track illness related absences of staff and students.
 
 - Create an account
-- Register your school
-  - Alternatively request affiliation to registered school
+  - user_id
+  - email
+  - password
+  - affiliate_school_id
+  - date_joined
+  - last_login
+  - Schools
+    - school_id
+    - name
+    - street
+    - city
+    - state
+    - level (Primary, Secondary, Postsecondary)
+    - population
+    - date_added
+- Request affiliation to registered school
 - Report illnesses by week (avoid daily granularity to protect privacy and repetition)
   - Report by # of staff/student
+  - Report by
+    - COVID
+    - Influenza (Flu)
+    - RSV
+    - Pneumonia
+    - Strep Throat
+    - Bronchitis
+    - Stomach Flu
+    - Pink Eye
+    - Flu-like Symptoms
 - Dashboard for viewing data by school only if affiliated (to protect privacy)
-  - Dashboard aggregates all schools regardless of affiliation (can choose all schools or affiliated school, but non affiliated schools have to meet a minimum threshold of data to avoid logical deduction of PII)
-  - Filters/Aggregates by state, city, week
+  - Dashboard aggregates all schools regardless of affiliation, but available aggregates only available for affiliates
+  - Filters/Aggregates by state, city for both dashboard views
+    - Additional week filter for affiliates
 - Data table exportable to CSV
 
 NOTE: This web application was originally written using a Python serverless API via AWS Lambda and AWS API Gateway for the back-end and a standard CRA based React front-end, but has since been converted to a full-stack NextJS based application. This conversion was done to practice NextJS.
