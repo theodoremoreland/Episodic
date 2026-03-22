@@ -3,6 +3,8 @@
 ## Table of contents
 
 - [Overview](#overview)
+  - [Considerations](#considerations)
+  - [Models](#models)
 - [Learnings](#learnings)
 - [Technologies used](#technologies-used)
 - [Screenshots](#screenshots)
@@ -14,8 +16,8 @@
 This web application allows school administrators to report and track illness related absences of staff and students.
 
 - Create an account
-- Request affiliation to registered school
-- Report illnesses by week (avoid daily granularity to protect privacy and repetition)
+- Request affiliation to registered school or register school
+- Report illnesses by week (quantities are in buckets such as <5 5-10, 10-20, 20-50, 50-100, 100-200, 200-500 etc)
   - Report by # of staff/student
   - Report by
     - COVID
@@ -34,9 +36,17 @@ This web application allows school administrators to report and track illness re
     - Additional week filter for affiliates
 - Data table exportable to CSV
 
-Models:
+### Considerations
 
-Users
+#### FERPA
+
+#### ADA
+
+#### FMLA
+
+### Models
+
+#### Users
 
 - user_id
 - email
@@ -45,18 +55,18 @@ Users
 - date_joined
 - last_login
 
-Schools
+#### Schools
 
 - school_id (uuid)
 - name (varchar)
 - street (varchar)
-- city ()
-- state ()
+- city (varchar)
+- state (varchar)
 - level (Primary, Secondary, Postsecondary)
 - population (int)
 - date_added (date)
 
-Reports
+#### Reports
 
 - reported_by (uuid - foreign key)
 - staff_report (jsonb)
@@ -65,7 +75,7 @@ Reports
 - week_ending_date (date)
 - date_reported (date)
 
-Illnesses
+#### Illnesses
 
 - illness_id (int - foreign key)
 - name (varchar)
@@ -73,8 +83,6 @@ Illnesses
 - date_added (date)
 - category (varchar)
 - last_modified_date (date)
-
-NOTE: This web application was originally written using a Python serverless API via AWS Lambda and AWS API Gateway for the back-end and a standard CRA based React front-end, but has since been converted to a full-stack NextJS based application. This conversion was done to practice NextJS.
 
 ## Learnings
 
